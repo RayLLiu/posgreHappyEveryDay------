@@ -41,7 +41,3 @@ angular.module('nodeTodo', [])
     };
 
 });
-
-
-
-
