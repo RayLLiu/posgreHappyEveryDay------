@@ -5,6 +5,7 @@ var path = require('path');
 var pg = require('pg');
 var connectionString ='postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
 var bodyParser=require("body-parser");
+var deepEqual = require('deep-equal');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res, next) {
@@ -36,12 +37,28 @@ app.post('/login',function(req,res){
         if(err) {
           return console.error('error running query', err);
         }
+
+        /**
+        if the password is correct, direct the user to user page:
+        */
+        var a=result.rows[0].password;
+
+
+        var S = require('string');
+        var b=S(a).strip(' ').s;
+        if([deepEqual(b,password)]){
+          console.log("*********Login successfully*****");
+        }
+
+
+
         console.log("the password is"+result.rows[0].password);
       });
 
 
-
+      //test only
       console.log("From Client pOST request: email is "+email+" and password is "+password);
+
       res.end("yes");
   });
 });

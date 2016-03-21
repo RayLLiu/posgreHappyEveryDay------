@@ -24,7 +24,14 @@ client.connect(function(err) {
     if(err) {
       return console.error('error running query', err);
     }
-    console.log(result.rows[0]);
+    console.log(result.rows[1]);
+
+    var a=result.rows[1].password;
+
+
+    var S = require('string');
+    var b=S(a).strip(' ').s;
+    console.log(b+".end");
     //output: Tue Jan 15 2013 19:12:47 GMT-600 (CST)
 
   });
