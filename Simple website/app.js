@@ -3,7 +3,7 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 var pg = require('pg');
-var connectionString ='postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
+var connectionString ='postgres://rliu040:@web0.site.uottawa.ca:15432/rliu040';
 var bodyParser=require("body-parser");
 var deepEqual = require('deep-equal');
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -4,7 +4,7 @@ var x = document.getElementById("frm1");
 
 var client = new pg.Client({
     user: "rliu040",
-    password: "8439L177Lr@",
+    password: "",
     database: "rliu040",
     port: 15432,
     host: "web0.site.uottawa.ca",
