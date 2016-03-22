@@ -10,13 +10,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', routes.index);
 app.get('/login', routes.login);
-app.get('signup', routes.signup);
-
-
-
-
-
-
+app.get('/signup', routes.signup);
 
 
 app.listen(3000, function() {

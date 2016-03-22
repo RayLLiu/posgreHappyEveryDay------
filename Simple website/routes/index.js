@@ -5,11 +5,14 @@ var deepEqual = require('deep-equal');
 //**************************************************************
 //throw login page to the client
 exports.index = function(req, res) {
+  console.log("where am i");
+
     res.render('login');
   }
   //**************************************************************
   //throw sign up page to the client
 exports.signup = function(req, res) {
+  console.log("where am i signup");
   res.render('signup');
 }
 
