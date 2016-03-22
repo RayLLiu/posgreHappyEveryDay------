@@ -3,7 +3,7 @@ var app = express();
 var router = express.Router();
 var path = require('path');
 var pg = require('pg');
-var connectionString ='postgres://rliu040:@web0.site.uottawa.ca:15432/rliu040';
+var connectionString ='postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
 var bodyParser=require("body-parser");
 var deepEqual = require('deep-equal');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,9 +18,15 @@ app.post('/login',function(req,res){
   var email=req.body.email;
   var password=req.body.password;
 
-  // Get a Postgres client from the connection pool
+  console.log(email+"***************"+password);
+
+    if(!(email===null || password===null)){
+
+
+     // Get a Postgres client from the connection pool
   pg.connect(connectionString, function(err, client, done) {
       // Handle connection errors
+
       if(err) {
         done();
         console.log(err);
@@ -61,7 +67,22 @@ app.post('/login',function(req,res){
 
       res.end("yes");
   });
+}
 });
+
+
+
+/*
+Sign up
+*/
+app.get("/signup", function (req, res, next) {
+  res.statusCode = 302;
+  res.redirect('../sign_up.html');
+  console.log("kksmdksjidajoisdjoaisjoaisjdaosdjaoisdij");
+  res.end();
+});
+
+
 
 
 app.listen(3000, function () {
