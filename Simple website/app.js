@@ -20,7 +20,7 @@ app.post('/login',function(req,res){
 
   console.log(email+"***************"+password);
 
-    if(!(email===null || password===null)){
+    if(email!="" && password!=""){
 
 
      // Get a Postgres client from the connection pool
