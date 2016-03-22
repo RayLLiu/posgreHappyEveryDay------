@@ -28,7 +28,8 @@
     "q": "^1.0.1",
     "serve-favicon": "~2.2.0",
     "string": "^3.3.1",
-    "underscore": "1.4.x"
+    "underscore": "1.4.x",
+    "ejs": "^1.0.0"
   },
   "devDependencies": {
     "supervisor": "~0.7.1"
