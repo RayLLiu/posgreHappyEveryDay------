@@ -14,17 +14,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.12/angular.min.js"></script>
   <script>
     $(document).ready(function() {
-      var email, pass,first_name,last_name;
+      var email, pass, first_name, last_name;
       $("#signup_submit").click(function() {
         email = $("#email").val();
         pass = $("#password").val();
-        first_name=$("#first_name");
-        last_name=$("#last_name");
+        first_name = $("#first_name");
+        last_name = $("#last_name");
         $.post("http://localhost:3000/signup_submit", {
           email: email,
           password: pass,
-          first_name:first_name,
-          last_name:last_name
+          first_name: first_name,
+          last_name: last_name
         }, function(data) {
           if (data === 'done') {
             alert("sign up success");
@@ -32,6 +32,36 @@
         });
       });
     });
+
+
+    function checkemail() {
+
+      var email = document.getElementById("Email").value;
+
+      if (email) {
+        $.ajax({
+          type: 'post',
+          url: 'http://localhost:3000/check_emil_exists',
+          data: {
+            email: email,
+          },
+          success: function(response) {
+            $('#email_status').html(response);
+            if (response == "OK") {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        });
+
+
+      } else {
+        $('#email_status').html("");
+        return false;
+      }
+
+    }
   </script>
 
 </head>
@@ -52,7 +82,9 @@
           <br>
           <input type="text" id="Last_name" class="form-control input-lg" placeholder="Last name...">
           <br>
-          <input type="text" id="Email" class="form-control input-lg" placeholder="Email...">
+          <input type="text" name="Email" id="Email" onmouseleave="checkemail();" class="form-control input-lg" placeholder="Email...">
+          <span id="email_status"></span>
+          <br>
           <br>
           <input type="text" id="password" class="form-control input-lg" placeholder="Pasword...">
         </div>
