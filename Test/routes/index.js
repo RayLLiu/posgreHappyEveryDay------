@@ -130,12 +130,15 @@ router.get('/signup_submit', function(req, res, next) {
 
 });
 /*   Sign up helper function*/
+
+
+
+
+
 /*check if the email exists*/
-router.get('/check_emil_exists', function(req, res, next) {
-  res.render('login', {
-    nullinput: ''
-  });
-  console.log("hudihudhisudsud");
+router.post('/check_emil_exists', function(req, res, next) {
+  console.log("I am in the check_emil_exists");
+  res.send("OK");
   var email=req.data.email;
 
 
