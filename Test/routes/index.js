@@ -86,7 +86,7 @@ router.post('/login', function(req, res, next) {
 
 
 /* Process Signup requests*/
-router.get('/signup_submit', function(req, res, next) {
+router.post('/signup_submit', function(req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
   var first_name = req.body.first_name;
@@ -137,10 +137,53 @@ router.get('/signup_submit', function(req, res, next) {
 
 /*check if the email exists*/
 router.post('/check_emil_exists', function(req, res, next) {
-  console.log("I am in the check_emil_exists");
-  res.send("OK");
-  var email=req.data.email;
+var email=req.body.email;
+//Go in to the database
+var result=true;
+console.log("am i here?");
+pg.connect(connectionString, function(err, client, done) {
+  // Handle connection errors
+console.log("A   "+email);
+  if (err) {
+    console.log("error");
+    done();
+    console.log(err);
+    return res.status(500).json({
+      success: false,
+      data: err
+    });
+  }
 
+  // SQL Query >insert user into db
+  client.query("SET SEARCH_PATH='movedb';");
+var q = "SELECT * FROM USERS WHERE EMAIL='" + email + "';"
+
+
+
+  client.query(q, function(err, result) {
+    if (err) {
+      return console.error('error running query', err);
+    }
+console.log(result.rows[0]+"***********************************");
+if(result.rows.length>0){
+  result=false;
+  console.log("B  "+email);
+}
+
+
+  });
+});
+//
+if(result){
+  res.send("0");
+  console.log("C   "+email);
+  return;
+}
+else{
+  res.send("not OK");
+  console.log("4 "+email);
+  return;
+}
 
 
 });
