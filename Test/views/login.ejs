@@ -28,27 +28,18 @@
         });
       });
     });
-    $(document).ready(function() {
-      $('#Email').blur(function() {
-        $.ajax({
-          type: "POST",
-          url: "/check_emil_exists",
-          data: {
-            email: $("#Email").val()
-          },
-          success: function(msg) {
-            if (msg == 'OK') {
-              alert("success");
-              $("#email_status").html('This email is ok');
-            } else {
-              alert("error");
-              $("#email_status").html('This email has been registered');
 
-            }
-          }
-        });
-      });
-    });
+
+$(document).ready(function(){
+
+$("#Email").blur(function(){
+alert("hehe");
+
+});
+
+
+};);
+
   </script>
 
 

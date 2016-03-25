@@ -119,7 +119,7 @@ router.post('/signup_submit', function(req, res, next) {
           return console.error('error running query', err);
         }
 
-          console.log("sign in successfully");
+        console.log("sign in successfully");
         res.end("yes");
 
 
@@ -136,60 +136,52 @@ router.post('/signup_submit', function(req, res, next) {
 
 
 /*check if the email exists*/
-router.post('/check_emil_exists', function(req, res, next) {
-var email=req.body.email;
-//Go in to the database
-var result=true;
-console.log("am i here?");
-pg.connect(connectionString, function(err, client, done) {
-  // Handle connection errors
-console.log("A   "+email+"   "+result);
-  if (err) {
-    console.log("error");
-    done();
-    console.log(err);
-    return res.status(500).json({
-      success: false,
-      data: err
-    });
-  }
-
-  // SQL Query >insert user into db
-  client.query("SET SEARCH_PATH='movedb';");
-var q = "SELECT EMAIL FROM USERS WHERE EMAIL='" + email + "';"
-
-
-
-  client.query(q, function(err, result) {
+router.post('/check_email_exists', function(req, res, next) {
+  var email = req.body.email;
+  //Go in to the database
+  var decision = true;
+  console.log("am i here?" + decision);
+  pg.connect(connectionString, function(err, client, done) {
+    // Handle connection errors
+    console.log("A   " + email + "   " + decision);
     if (err) {
-      return console.error('error running query', err);
+      console.log("error");
+      done();
+      console.log(err);
+      return res.status(500).json({
+        success: false,
+        data: err
+      });
     }
-console.log(result.rows[0].email+"***********************************");
-if(result.rows.length>0){
-  result=false;
-  res.send("OK");
-  console.log("B  "+email+"    "+result);
-  return;
-}else{
-  result=true;
-  res.send("not OK");
-  return;
-}
+
+    // SQL Query >insert user into db
+    client.query("SET SEARCH_PATH='movedb';");
+    var q = "SELECT EMAIL FROM USERS WHERE EMAIL='" + email + "';"
 
 
+
+    client.query(q, function(err, result) {
+      if (err) {
+        return console.error('error running query', err);
+      }
+      if (result.rows.length > 0) {
+        decision = false;
+        res.send("not OK");
+        console.log("The email is not ok");
+        return;
+      } else {
+        decision = true;
+        console.log("The email is ok");
+
+        res.send("OK");
+        return;
+      }
+
+
+    });
   });
-});
-//
-if(result){
-  res.send("OK");
-  console.log("C   "+email+"  "+result);
-  return;
-}
-else{
-  res.send("not OK");
-  console.log("4 "+email);
-  return;
-}
+  //
+
 
 
 });

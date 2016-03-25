@@ -36,7 +36,21 @@
         }
       });
     });
-    
+    $(document).ready(function() {
+
+      $('#Email').blur(function() {
+        alert("dsdsd");
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3000/check_email_exists",
+        data: {
+          email: $("#Email").val()
+        },
+         success: function(result){
+         $("#email_status").html("result");
+     }});
+      });
+    });
   </script>
 
 </head>
