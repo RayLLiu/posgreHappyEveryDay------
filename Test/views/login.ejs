@@ -28,6 +28,27 @@
         });
       });
     });
+    $(document).ready(function() {
+      $('#Email').blur(function() {
+        $.ajax({
+          type: "POST",
+          url: "/check_emil_exists",
+          data: {
+            email: $("#Email").val()
+          },
+          success: function(msg) {
+            if (msg == 'OK') {
+              alert("success");
+              $("#email_status").html('This email is ok');
+            } else {
+              alert("error");
+              $("#email_status").html('This email has been registered');
+
+            }
+          }
+        });
+      });
+    });
   </script>
 
 
@@ -44,7 +65,9 @@
       <hr>
       <h1 class="lead">Movie DB</h1>
     </div>
-      <p><%= nullinput %></p>
+    <p>
+      <%= nullinput %>
+    </p>
     <div class="todo-form">
       <form>
         <div class="form-group">

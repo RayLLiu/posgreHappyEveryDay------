@@ -24,7 +24,7 @@ router.get('/signup', function(req, res, next) {
 router.post('/login', function(req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
-  console.log(email + "***************" + password);
+  //console.log(email + "***************" + password);
 
 
   if (email != "" && password != "") {
@@ -143,7 +143,7 @@ var result=true;
 console.log("am i here?");
 pg.connect(connectionString, function(err, client, done) {
   // Handle connection errors
-console.log("A   "+email);
+console.log("A   "+email+"   "+result);
   if (err) {
     console.log("error");
     done();
@@ -156,7 +156,7 @@ console.log("A   "+email);
 
   // SQL Query >insert user into db
   client.query("SET SEARCH_PATH='movedb';");
-var q = "SELECT * FROM USERS WHERE EMAIL='" + email + "';"
+var q = "SELECT EMAIL FROM USERS WHERE EMAIL='" + email + "';"
 
 
 
@@ -164,10 +164,16 @@ var q = "SELECT * FROM USERS WHERE EMAIL='" + email + "';"
     if (err) {
       return console.error('error running query', err);
     }
-console.log(result.rows[0]+"***********************************");
+console.log(result.rows[0].email+"***********************************");
 if(result.rows.length>0){
   result=false;
-  console.log("B  "+email);
+  res.send("OK");
+  console.log("B  "+email+"    "+result);
+  return;
+}else{
+  result=true;
+  res.send("not OK");
+  return;
 }
 
 
@@ -175,8 +181,8 @@ if(result.rows.length>0){
 });
 //
 if(result){
-  res.send("0");
-  console.log("C   "+email);
+  res.send("OK");
+  console.log("C   "+email+"  "+result);
   return;
 }
 else{
