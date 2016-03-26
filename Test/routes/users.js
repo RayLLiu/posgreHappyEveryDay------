@@ -31,4 +31,14 @@ router.get('/get_movie_list', function(req, res, next) {
   });
 });
 
+//a
+router.get('/get_movie', function(req, res, next) {
+
+  db.moviedb.movie.where("name=$1",[req.body.name],function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
+
+
 module.exports = router;
