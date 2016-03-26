@@ -15,7 +15,16 @@ router.get('/', function(req, res, next) {
 
 //Get movie list
 router.get('/get_user_list', function(req, res, next) {
-  console.log("shihihi");
+
+  db.get_user_list(function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
+
+//Get movie list
+router.get('/get_movie_list', function(req, res, next) {
+  console.log("movie");
   db.get_user_list(function(err, result) {
     console.log(result);
     res.send(result);
