@@ -40,5 +40,12 @@ router.get('/get_movie', function(req, res, next) {
   });
 });
 
-
+//b
+router.get('/get_movie_list', function(req, res, next) {
+  console.log("movie");
+  db.get_user_list(function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
 module.exports = router;
