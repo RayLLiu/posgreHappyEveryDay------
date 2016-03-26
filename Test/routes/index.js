@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var session = require('client-sessions');
 var pg = require('pg');
 var deepEqual = require('deep-equal');
 var massive = require("massive");
@@ -19,8 +18,6 @@ router.get('/signup', function(req, res, next) {
   res.render('signup');
 
 });
-
-
 
 /* Process login requests*/
 router.post('/login', function(req, result, next) {
@@ -60,57 +57,27 @@ router.post('/login', function(req, result, next) {
 
 
 /* Process Signup requests*/
-router.post('/signup_submit', function(req, res, next) {
+router.post('/signup/submit', function(req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
   var first_name = req.body.first_name;
   var last_name = req.body.last_name;
-  console.log(email + "***************" + password);
-
-
-  if (email != "" && password != "") {
-    // Get a Postgres client from the connection pool
-    pg.connect(connectionString, function(err, client, done) {
-      // Handle connection errors
-
-      if (err) {
-        done();
-        console.log(err);
-        return res.status(500).json({
-          success: false,
-          data: err
-        });
-      }
-
-      // SQL Query >insert user into db
-      client.query("SET SEARCH_PATH='movedb';");
-      var q = "INSERT INTO USERS(password,last_name,first_name,email) VALUES('" + password + "','" + last_name + "','" + first_name + "','" + email + "')";
-
-
-
-      client.query(q, function(err, result) {
-        if (err) {
-          return console.error('error running query', err);
-        }
-
-        console.log("sign in successfully");
-        res.end("yes");
-
-
-
-      });
-    });
-  }
-
+// Get a Postgres client from the connection pool
+  db.movedb.users.insert({
+    password: password,
+    last_name: last_name,
+    first_name: first_name,
+    email: email
+  }, function(err, result) {
+    console.log(result);
+req.session.user = result;
+res.redirect('/user');
+  });
+  res.end("yes");
 });
 /*   Sign up helper function*/
-
-
-
-
-
 /*check if the email exists*/
-router.post('/check_email_exists', function(req, result, next) {
+router.post('/signup/check_email_exists', function(req, result, next) {
   var email = req.body.email;
   //Go in to the database
   var decision = true;
@@ -137,13 +104,7 @@ router.post('/check_email_exists', function(req, result, next) {
       console.log("This email address is not ok");
       result.send("not OK");
     }
-
-
   });
-
-
-
-
 });
 
 
