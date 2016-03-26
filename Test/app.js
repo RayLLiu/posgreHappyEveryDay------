@@ -4,12 +4,31 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var massive = require("massive");
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var connectionString = 'postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
+var massiveInstance = massive.connectSync({connectionString : connectionString});
+var db=massive.connectSync({connectionString : connectionString});
 
 var app = express();
 
+/*
+
+test db
+db.movedb.users.where("email=$1", ["rogerliuray@gmail.com"], function(err, res){
+  console.log(res[0].password);
+});
+*/
+
+
+
+
+
+
+
+
+app.set('db', massiveInstance);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

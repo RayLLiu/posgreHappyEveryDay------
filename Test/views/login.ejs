@@ -29,17 +29,25 @@
       });
     });
 
+//check if email is correct
+    $(document).ready(function() {
 
-$(document).ready(function(){
-
-$("#Email").blur(function(){
-alert("hehe");
-
-});
-
-
-};);
-
+      $('#Email').blur(function() {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3000/check_email_exists",
+        data: {
+          email: $("#Email").val()
+        },
+         success: function(result){
+           if(result=="OK"){
+         $("#email_status").html("This email doesn't exist");
+       }else{
+         $("#email_status").html("");
+       }
+     }});
+      });
+    });
   </script>
 
 
@@ -62,7 +70,9 @@ alert("hehe");
     <div class="todo-form">
       <form>
         <div class="form-group">
-          <input type="text" id="email" class="form-control input-lg" placeholder="Enter email...">
+          <input type="text" id="Email" class="form-control input-lg" placeholder="Enter email...">
+          <span id="email_status"></span>
+          <br>
           <br>
           <input type="text" id="password" class="form-control input-lg" placeholder="Enter pasword...">
         </div>

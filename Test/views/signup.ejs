@@ -39,7 +39,6 @@
     $(document).ready(function() {
 
       $('#Email').blur(function() {
-        alert("dsdsd");
         $.ajax({
           type: "POST",
           url: "http://localhost:3000/check_email_exists",
@@ -47,7 +46,11 @@
           email: $("#Email").val()
         },
          success: function(result){
-         $("#email_status").html("result");
+           if(result=="OK"){
+         $("#email_status").html("This email is ok");
+       }else{
+         $("#email_status").html("This email address is not available");
+       }
      }});
       });
     });

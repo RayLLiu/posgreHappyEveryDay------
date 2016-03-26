@@ -3,9 +3,11 @@ var router = express.Router();
 var session = require('client-sessions');
 var pg = require('pg');
 var deepEqual = require('deep-equal');
+var massive = require("massive");
 var connectionString = 'postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
-
-/* GET home page. */
+var db = massive.connectSync({
+  connectionString: connectionString
+});
 router.get('/', function(req, res, next) {
   res.render('login', {
     nullinput: ''
@@ -21,66 +23,38 @@ router.get('/signup', function(req, res, next) {
 
 
 /* Process login requests*/
-router.post('/login', function(req, res, next) {
+router.post('/login', function(req, result, next) {
   var email = req.body.email;
   var password = req.body.password;
-  //console.log(email + "***************" + password);
 
+  //using massive to find password:
+  db.movedb.users.where("email=$1", [email], function(err, res) {
 
-  if (email != "" && password != "") {
-    // Get a Postgres client from the connection pool
-    console.log("sajoisjdosidjfoajsdofjaosdifjoasidjoiasjdoisajdoooadsj");
-
-    pg.connect(connectionString, function(err, client, done) {
-      // Handle connection errors
-
-      if (err) {
-        done();
-        console.log(err);
-        return res.status(500).json({
-          success: false,
-          data: err
-        });
-      }
-
-      // SQL Query > Select Data
-      client.query("SET SEARCH_PATH='movedb';");
-      var q = "SELECT PASSWORD FROM USERS WHERE EMAIL='" + email + "';"
-
-
-
-      client.query(q, function(err, result) {
-        if (err) {
-          return console.error('error running query', err);
-        }
-
-        /**
-        if the password is correct, direct the user to user page:
-        */
-        console.log(result.rows[0].password);
-        var a = result.rows[0].password;
-        var S = require('string');
-        var b = S(a).strip(' ').s;
-        if ([deepEqual(b, password)]) {
-          console.log("*********Login successfully*****");
-          //req.session.user = user;
-          // redirect the page to user's info page
-          res.render('user');
-          res.end("yes");
-        } else {
-          //print the message that login failed.
-
-        }
-
-        console.log("the password is" + result.rows[0].password);
+    if (err) {
+      done();
+      console.log(err);
+      return result.status(500).json({
+        success: false,
+        data: err
       });
-    });
-  } else {
-    //if no input for Username and pw, throw a new login page
-    res.render('login', {
-      nullinput: 'Please enter the email and password.'
-    });
-  }
+    }
+    var check = res[0].password;
+    check = check.replace(/\s+/g, '');
+    if (check == password) {
+      // The password is correct
+      console.log("the password is correct");
+      result.render('user');
+      result.end("yes");
+    } else {
+      //The password is in correct
+      console.log("the password is incorrect");
+      result.render('login', {
+        nullinput: ''
+      });
+      result.end("yes");
+    }
+  });
+
 });
 
 
@@ -136,51 +110,37 @@ router.post('/signup_submit', function(req, res, next) {
 
 
 /*check if the email exists*/
-router.post('/check_email_exists', function(req, res, next) {
+router.post('/check_email_exists', function(req, result, next) {
   var email = req.body.email;
   //Go in to the database
   var decision = true;
-  console.log("am i here?" + decision);
-  pg.connect(connectionString, function(err, client, done) {
-    // Handle connection errors
-    console.log("A   " + email + "   " + decision);
+
+
+  db.movedb.users.where("email=$1", [email], function(err, res) {
+
     if (err) {
-      console.log("error");
       done();
       console.log(err);
-      return res.status(500).json({
+      return result.status(500).json({
         success: false,
         data: err
       });
     }
-
-    // SQL Query >insert user into db
-    client.query("SET SEARCH_PATH='movedb';");
-    var q = "SELECT EMAIL FROM USERS WHERE EMAIL='" + email + "';"
-
-
-
-    client.query(q, function(err, result) {
-      if (err) {
-        return console.error('error running query', err);
-      }
-      if (result.rows.length > 0) {
-        decision = false;
-        res.send("not OK");
-        console.log("The email is not ok");
-        return;
-      } else {
-        decision = true;
-        console.log("The email is ok");
-
-        res.send("OK");
-        return;
-      }
+    var email_is_null = (res[0] == null);
+    if (email_is_null) {
+      // The password is correct
+      console.log("This email address is ok");
+      result.send('OK');
+      return;
+    } else {
+      //The password is in correct
+      console.log("This email address is not ok");
+      result.send("not OK");
+    }
 
 
-    });
   });
-  //
+
 
 
 
