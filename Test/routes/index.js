@@ -25,7 +25,7 @@ router.post('/login', function(req, result, next) {
   var password = req.body.password;
 
   //using massive to find password:
-  db.movedb.users.where("email=$1", [email], function(err, res) {
+  db.moviedb.users.where("email=$1", [email], function(err, res) {
 
     if (err) {
       done();
@@ -63,7 +63,7 @@ router.post('/signup/submit', function(req, res, next) {
   var first_name = req.body.first_name;
   var last_name = req.body.last_name;
 // Get a Postgres client from the connection pool
-  db.movedb.users.insert({
+  db.moviedb.users.insert({
     password: password,
     last_name: last_name,
     first_name: first_name,
@@ -83,7 +83,7 @@ router.post('/signup/check_email_exists', function(req, result, next) {
   var decision = true;
 
 
-  db.movedb.users.where("email=$1", [email], function(err, res) {
+  db.moviedb.users.where("email=$1", [email], function(err, res) {
 
     if (err) {
       done();
