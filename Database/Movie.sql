@@ -1,3 +1,5 @@
+﻿SET SEARCH_PATH='moviedb';
+
 Create Table MovieTopics (
 	topic_id SERIAL NOT NULL,
 	movie_id  serial NOT NULL,

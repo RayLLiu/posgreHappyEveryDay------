@@ -48,4 +48,5 @@ router.get('/get_movie_list', function(req, res, next) {
     res.send(result);
   });
 });
+
 module.exports = router;
