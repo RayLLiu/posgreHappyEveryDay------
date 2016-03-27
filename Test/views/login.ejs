@@ -15,8 +15,8 @@
   <script>
     $(document).ready(function() {
       var email, pass;
-      $("#submit").click(function() {
-        email = $("#email").val();
+      $("#login").click(function() {
+        email = $("#Email").val();
         pass = $("#password").val();
         $.post("http://localhost:3000/login", {
           email: email,
@@ -43,7 +43,7 @@
            if(result=="OK"){
          $("#email_status").html("This email doesn't exist");
        }else{
-         $("#email_status").html("");
+         $("#email_status").html("This email exists");
        }
      }});
       });
@@ -76,7 +76,7 @@
           <br>
           <input type="text" id="password" class="form-control input-lg" placeholder="Enter pasword...">
         </div>
-        <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+        <button type="login" id="login" class="btn btn-primary btn-lg btn-block">Login</button>
       </form>
       <button type="button" onclick="location.href='http://localhost:3000/signup';" id="signup" class="btn btn-primary btn-lg btn-block">Sign up</button>
     </div>

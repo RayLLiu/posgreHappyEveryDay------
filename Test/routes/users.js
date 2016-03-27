@@ -9,8 +9,8 @@ var db = massive.connectSync({
 });
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
-  res.send('respond with a resource');
+  res.render('user');
+  return;
 });
 
 //Get movie list

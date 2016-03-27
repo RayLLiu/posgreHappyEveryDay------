@@ -35,20 +35,27 @@ router.post('/login', function(req, result, next) {
         data: err
       });
     }
-    var check = res[0].password;
-    check = check.replace(/\s+/g, '');
-    if (check == password) {
-      // The password is correct
-      console.log("the password is correct");
-      result.render('user');
+    //if the email doesn't exist, redirect to login.
+
+    if (res[0] == undefined) {
+      result.redirect('/');
       result.end("yes");
     } else {
-      //The password is in correct
-      console.log("the password is incorrect");
-      result.render('login', {
-        nullinput: ''
-      });
-      result.end("yes");
+      var check = res[0].password;
+      check = check.replace(/\s+/g, '');
+      if (check == password) {
+        // The password is correct
+        console.log("the password is correct");
+        result.redirect('/users');
+        result.end("yes");
+      } else {
+        //The password is in correct
+        console.log("the password is incorrect");
+        result.render('login', {
+          nullinput: ''
+        });
+        result.end("yes");
+      }
     }
   });
 
@@ -62,7 +69,7 @@ router.post('/signup/submit', function(req, res, next) {
   var password = req.body.password;
   var first_name = req.body.first_name;
   var last_name = req.body.last_name;
-// Get a Postgres client from the connection pool
+  // Get a Postgres client from the connection pool
   db.moviedb.users.insert({
     password: password,
     last_name: last_name,
@@ -70,8 +77,8 @@ router.post('/signup/submit', function(req, res, next) {
     email: email
   }, function(err, result) {
     console.log(result);
-req.session.user = result;
-res.redirect('/user');
+    req.session.user = result;
+    res.redirect('/user');
   });
   res.end("yes");
 });
