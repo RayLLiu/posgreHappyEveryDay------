@@ -11,12 +11,13 @@ router.get('/', function(req, res, next) {
   res.render('login', {
     nullinput: ''
   });
+  res.end("yes");
 });
 
 /*Get sign up page*/
 router.get('/signup', function(req, res, next) {
   res.render('signup');
-
+  res.end("yes");
 });
 
 /* Process login requests*/
@@ -38,7 +39,8 @@ router.post('/login', function(req, result, next) {
     //if the email doesn't exist, redirect to login.
 
     if (res[0] == undefined) {
-      result.redirect('/');
+      console.log("the password does not match");
+      result.render('log in failed');
       result.end("yes");
     } else {
       var check = res[0].password;
@@ -46,13 +48,13 @@ router.post('/login', function(req, result, next) {
       if (check == password) {
         // The password is correct
         console.log("the password is correct");
-        result.redirect('/users');
+        result.send('log in success');
         result.end("yes");
       } else {
         //The password is in correct
         console.log("the password is incorrect");
-        result.render('login', {
-          nullinput: ''
+        result.send('log in failed', {
+          nullinput: 'the pass word does not match'
         });
         result.end("yes");
       }
@@ -76,11 +78,19 @@ router.post('/signup/submit', function(req, res, next) {
     first_name: first_name,
     email: email
   }, function(err, result) {
-    console.log(result);
-    req.session.user = result;
-    res.redirect('/user');
+    if (err) {
+      console.log(err);
+      console.log("an error happens");
+      res.send('Sign up failed');
+    } else {
+      console.log(result);
+      var s="Sign up success";
+      res.send(s);
+      console.log(s);
+      res.end("yes");
+    }
+
   });
-  res.end("yes");
 });
 /*   Sign up helper function*/
 /*check if the email exists*/
