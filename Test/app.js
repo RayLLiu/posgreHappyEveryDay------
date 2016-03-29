@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var connectionString = 'postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
 var massiveInstance = massive.connectSync({connectionString : connectionString});
 var db=massive.connectSync({connectionString : connectionString});
-
+var favicon = require('serve-favicon');
 var app = express();
 
 /*
