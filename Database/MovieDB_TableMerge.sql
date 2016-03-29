@@ -41,8 +41,8 @@ CREATE TABLE PROFILE(
   CONSTRAINT profile_fkey FOREIGN KEY (userid)
     REFERENCES USERS (userid)
     ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT profile_pkey PRIMARY KEY (userid,year_born),
-    age_range char(20) CHECK(age_range IN('Youth','Adult','Elderly')),
+    CONSTRAINT profile_pkey PRIMARY KEY (userid),
+    age_range char(20) CHECK(age_range IN('Youth','Adult','Senior')),
     year_born char(4),
     gender    char(20) CHECK(gender IN('Male','Female','Unknown')),
     occupation char(40),
@@ -85,23 +85,21 @@ CREATE TABLE MOVIE
 (
   movie_id serial PRIMARY key,
   name char(50) NOT NULL UNIQUE,
-  date_released DATE NOT NULL
-
+  date_released DATE NOT NULL,
+  Language VARCHAR(20),
+  Subtitles CHAR(1) NOT NULL,
+  Country VARCHAR(20)
+  Check (Subtitles = 'True' or Subtitles = 'False')
 );
 
 /*WATCHED*****************************/
 CREATE TABLE WATCHES(
   userid INT NOT NULL,
   movie_id INT NOT NULL,
-  CONSTRAINT userid_fkey FOREIGN KEY(userid)
-  REFERENCES USERS (userid) ON UPDATE CASCADE ON DELETE CASCADE,
-  CONSTRAINT movie_id FOREIGN KEY(movie_id) ON UPDATE CASCADE
-  REFERENCES MOVIE(movie_id),
-  language char(30),
-  subtitles boolean,
-  country char(40)
-
-
+  rating FLOAT check (rating>0 and rating<10),
+  date DATE NOT NULL,
+  Primary Key (userid,movie_id)
+  
 );
 
 /*Kyle's Table***********************************************/
@@ -161,13 +159,9 @@ CREATE TABLE Sponsors
 /*Movie Topics*/
 
 Create Table MovieTopics (
-TopicID INT NOT NULL,
-MovieID INT NOT NULL,
-Language VARCHAR(20),
-Subtitles CHAR(1) NOT NULL,
-Country VARCHAR(20),
-Primary Key (TopicID, MovieID),
-Check (Subtitles = 'Y' or Subtitles = 'N')
+topic_id INT NOT NULL,
+movie_id INT NOT NULL,
+Primary Key (topic_id, movie_id)
 );
 
 
@@ -184,12 +178,9 @@ Primary key (ActorID)
 
 /*Role*/
 Create Table Role(
-RoleID INT NOT NULL,
+RoleID serial NOT NULL,
 Name VARCHAR(20),
-ActorID INT NOT NULL,
-Primary Key(RoleID),
-Foreign Key (ActorID) References Actor,
-Foreign Key (MovieID) References ActorPlays
+Primary Key(RoleID)
 );
 
 
@@ -197,8 +188,7 @@ Foreign Key (MovieID) References ActorPlays
 Create Table ActorPlays(
 MovieID INT NOT NULL,
 ActorID INT NOT NULL,
-Primary Key (MovieID, ActorID)
+RoleID INT NOT NULL,
+Primary Key (MovieID, ActorID),
+Foreign Key (RoleID) References Role
 );
- Drop TABLE ActorPlays;
- Drop TABLE Actor;
- Drop TABLE MovieTopics;
