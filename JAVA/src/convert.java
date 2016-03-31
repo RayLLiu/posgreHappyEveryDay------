@@ -1,6 +1,10 @@
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import com.univocity.parsers.csv.CsvParser;
@@ -18,9 +22,16 @@ public class convert {
 		CsvParser parser = new CsvParser(new CsvParserSettings());
 
 		// 2nd, parses all rows from the CSV file into a 2-dimensional array
-		List<String[]> resolvedData = parser.parseAll(new FileReader("moviedb - movie.csv"));
+		List<String[]> resolvedData = parser.parseAll(new FileReader("/Users/rayliu/Desktop/movie.csv"));
 
-		// 3rd, process the 2-dimensional array with business logic
-		// ......
+		System.out.println(resolvedData.get(0)[0]);
+		String eol = System.getProperty("line.separator");
+		String content = "Hello File!";
+		String path = "/Users/rayliu/Desktop/movie.txt";
+		try{
+		Files.write( Paths.get(path), content.getBytes(), StandardOpenOption.CREATE);}
+		catch (IOException e){
+			System.out.println("IO ERROR");
+		}
 	}
 }
