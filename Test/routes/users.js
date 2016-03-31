@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   res.end("yes");
 });
 
-//Get movie list
+//Get user list
 router.get('/get_user_list', function(req, res, next) {
 
   db.get_user_list(function(err, result) {
@@ -37,7 +37,7 @@ router.get('/get_movie_list', function(req, res, next) {
 //a
 router.get('/get_movie', function(req, res, next) {
 
-  db.moviedb.movie.where("name=$1", [req.body.name], function(err, result) {
+  db.moviedb.movie.where("name=$1", [req.body.moviename], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -45,18 +45,18 @@ router.get('/get_movie', function(req, res, next) {
 });
 
 //b
-router.get('/get_movie_list', function(req, res, next) {
-  console.log("movie");
-  db.get_user_list(function(err, result) {
+router.get('/get_actors_from_movie', function(req, res, next) {
+  console.log(req.body.moviename);
+  db.get_actors_from_movie([req.body.moviename],function(err, result) {
     console.log(result);
     res.send(result);
   });
   res.end("yes");
 });
 //c
-router.get('/get_actors_from_movie', function(req, res, next) {
+router.get('/details_of_directors_and_studios', function(req, res, next) {
   console.log("actor and role");
-  db.get_user_list(function(err, result) {
+  db.details_of_directors_and_studios([req.body.category],function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -65,7 +65,7 @@ router.get('/get_actors_from_movie', function(req, res, next) {
 //d
 router.get('/actor_appear_most', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.actor_appear_most(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -74,7 +74,7 @@ router.get('/actor_appear_most', function(req, res, next) {
 //e
 router.get('/two_most_actors', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.two_most_actors(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -83,16 +83,16 @@ router.get('/two_most_actors', function(req, res, next) {
 //f
 router.get('/ten_highest_rating_movies', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.ten_highest_rating_movies(function(err, result) {
     console.log(result);
     res.send(result);
   });
   res.end("yes");
 });
 //g
-router.get('/hiest_rating_movie_and_topic', function(req, res, next) {
+router.get('/highest_rating_movie_and_topic', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.highest_rating_movie_and_topic(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -101,7 +101,7 @@ router.get('/hiest_rating_movie_and_topic', function(req, res, next) {
 //h
 router.get('/user_rating_number', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.user_rating_number(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -110,7 +110,7 @@ router.get('/user_rating_number', function(req, res, next) {
 //i
 router.get('/movie_not_rated_2016', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.movie_not_rated_2016(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -119,7 +119,7 @@ router.get('/movie_not_rated_2016', function(req, res, next) {
 //j
 router.get('/director_movie_lower', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.director_movie_lower(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -128,7 +128,7 @@ router.get('/director_movie_lower', function(req, res, next) {
 //k
 router.get('/category_highest_movie', function(req, res, next) {
   console.log("category name");
-  db.type_highest_movie([req.body.name], function(err, result) {
+  db.category_highest_movie([req.body.name], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -137,7 +137,7 @@ router.get('/category_highest_movie', function(req, res, next) {
 //l
 router.get('/category_most_popular', function(req, res, next) {
   console.log("category name");
-  db.type_highest_movie([req.body.name], function(err, result) {
+  db.category_most_popular([req.body.name], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -146,7 +146,7 @@ router.get('/category_most_popular', function(req, res, next) {
 //m
 router.get('/user_overall_rating', function(req, res, next) {
   console.log("category name");
-  db.type_highest_movie([req.body.name], function(err, result) {
+  db.user_overall_rating([req.body.name], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -155,7 +155,7 @@ router.get('/user_overall_rating', function(req, res, next) {
 //n
 router.get('/frequent_user', function(req, res, next) {
   console.log("category name");
-  db.type_highest_movie([req.body.name], function(err, result) {
+  db.frequent_user([req.body.name], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -164,7 +164,7 @@ router.get('/frequent_user', function(req, res, next) {
 //o
 router.get('/John_Smith', function(req, res, next) {
   console.log("category name");
-  db.type_highest_movie([req.body.username], function(err, result) {
+  db.John_Smith([req.body.username], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -173,7 +173,7 @@ router.get('/John_Smith', function(req, res, next) {
 //p
 router.get('/diverse_user', function(req, res, next) {
   console.log("category name");
-  db.type_highest_movie([req.body.username], function(err, result) {
+  db.diverse_user([req.body.username], function(err, result) {
     console.log(result);
     res.send(result);
   });
