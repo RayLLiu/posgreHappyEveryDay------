@@ -22,16 +22,44 @@ public class convert {
 		CsvParser parser = new CsvParser(new CsvParserSettings());
 
 		// 2nd, parses all rows from the CSV file into a 2-dimensional array
-		List<String[]> resolvedData = parser.parseAll(new FileReader("/Users/rayliu/Desktop/movie.csv"));
+		List<String[]> resolvedData = parser.parseAll(new FileReader("/Users/rayliu/Desktop/actor.csv"));
 
-		System.out.println(resolvedData.get(0)[0]);
+		System.out.println(resolvedData.get(10)[3]);
 		String eol = System.getProperty("line.separator");
-		String content = "Hello File!";
-		String path = "/Users/rayliu/Desktop/movie.txt";
+		String content = resolvedData.get(10)[3];
+		String query=actor(resolvedData);
+		String path = "/Users/rayliu/Desktop/actor.sql";
 		try{
-		Files.write( Paths.get(path), content.getBytes(), StandardOpenOption.CREATE);}
+		Files.write( Paths.get(path), query.getBytes(), StandardOpenOption.CREATE);}
 		catch (IOException e){
 			System.out.println("IO ERROR");
 		}
+	}
+	
+	//help method
+	public static String actor(List<String[]> a){
+		String eol = System.getProperty("line.separator");
+		String query="";
+		for(int i=1;i<a.size();i++){
+		 query=query+eol+"INSERT INTO movie(actor_id,last_name,first_name,date_of_birth) VALUES(\'"+a.get(i)[0]+"\',\'"+a.get(i)[1]+"\',\'"+a.get(i)[2]+"\',\'"+a.get(i)[3]+"\');";
+			
+		}
+		return query;
+	}
+	
+	
+	
+	public static String movie(String[] a ,String trailer){
+		
+		/*
+		 * INSERT INTO Customer(CustId,Name,Address,Amount) 
+VALUES (1,'John','Ottawa',8.5),
+(2,'Amy','Orleans',9.0),
+(3,'Peter','Gatineau',6.3);
+		 */
+		String query="INSERT INTO movie(movie_id,name,date_released,language,subtitles,country,trailer) VALUES(\'"+a[0]+"\',\'"+a[1]+"\',\'"+a[2]+"\',\'"+a[3]+"\',\'"+a[4]+"\',\'"+a[5]+"\',\'"+a[6]+"\')";
+		
+		
+		return query;
 	}
 }
