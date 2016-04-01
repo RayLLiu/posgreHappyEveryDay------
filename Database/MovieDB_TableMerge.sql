@@ -15,13 +15,11 @@ CREATE TABLE IF NOT EXISTS "category" (
 
 
 
-
-
 CREATE TABLE USERS(
-  UserID SERIAL PRIMARY KEY,
+  user_id SERIAL PRIMARY KEY,
   password CHAR(20) NOT NULL,
-  Last_Name CHAR(20) NOT NULL,
-  First_Name CHAR(20) NOT NULL,
+  last_name CHAR(20) NOT NULL,
+  first_name CHAR(20) NOT NULL,
   Email CHAR(40) NOT NULL UNIQUE,
   City CHAR(40),
   Province CHAR(40),
@@ -37,11 +35,11 @@ VALUES('321','Liu','fei','fei@gmail.com','nanjing','jiangsu','China');
 
 /*Profile************************************/
 CREATE TABLE PROFILE(
-     userid INT NOT NULL,
-  CONSTRAINT profile_fkey FOREIGN KEY (userid)
-    REFERENCES USERS (userid)
+     user_id INT NOT NULL,
+  CONSTRAINT profile_fkey FOREIGN KEY (user_id)
+    REFERENCES USERS (user_id)
     ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT profile_pkey PRIMARY KEY (userid),
+    CONSTRAINT profile_pkey PRIMARY KEY (user_id),
     age_range char(20) CHECK(age_range IN('Youth','Adult','Senior')),
     year_born char(4),
     gender    char(20) CHECK(gender IN('Male','Female','Unknown')),
@@ -94,12 +92,12 @@ CREATE TABLE MOVIE
 
 /*WATCHED*****************************/
 CREATE TABLE WATCHES(
-  userid INT NOT NULL,
+  user_id INT NOT NULL,
   movie_id INT NOT NULL,
   rating FLOAT check (rating>0 and rating<10),
   date DATE NOT NULL,
-  Primary Key (userid,movie_id)
-  
+  Primary Key (user_id,movie_id)
+
 );
 
 /*Kyle's Table***********************************************/
@@ -168,27 +166,29 @@ Primary Key (topic_id, movie_id)
 
 /*Actor*/
 Create Table Actor (
-ActorID INT NOT NULL,
-Last_Name VARCHAR(20),
-First_Name VARCHAR(20),
-DateOfBirth DATE,
-Primary key (ActorID)
+actor_id INT NOT NULL,
+last_name VARCHAR(20),
+first_name VARCHAR(20),
+date_of_birth DATE,
+Primary key (actor_id)
 );
 
 
 /*Role*/
 Create Table Role(
-RoleID serial NOT NULL,
-Name VARCHAR(20),
-Primary Key(RoleID)
+role_id serial NOT NULL,
+name VARCHAR(20),
+movie_id INT NOT NULL,
+Primary Key(role_id)
+Foreign Key (movie_id) References movie
 );
 
 
 /*ActorPlays*/
 Create Table ActorPlays(
-MovieID INT NOT NULL,
-ActorID INT NOT NULL,
-RoleID INT NOT NULL,
-Primary Key (MovieID, ActorID),
-Foreign Key (RoleID) References Role
+movie_id INT NOT NULL,
+actor_id INT NOT NULL,
+role_id INT NOT NULL,
+Primary Key (movie_id, actor_id),
+Foreign Key (role_id) References Role
 );
