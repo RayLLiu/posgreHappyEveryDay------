@@ -21,7 +21,7 @@ router.get('/get_user_list', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
+  
 });
 
 //Get movie list

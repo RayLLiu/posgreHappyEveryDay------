@@ -41,7 +41,7 @@ public class convert {
 		String eol = System.getProperty("line.separator");
 		String query="";
 		for(int i=1;i<a.size();i++){
-		 query=query+eol+"INSERT INTO movie(actor_id,last_name,first_name,date_of_birth) VALUES(\'"+a.get(i)[0]+"\',\'"+a.get(i)[1]+"\',\'"+a.get(i)[2]+"\',\'"+a.get(i)[3]+"\');";
+		 query=query+eol+"INSERT INTO movie(actor_id,last_name,first_name,date_of_birth) VALUES(\'"+a.get(i)[0]+"\',\'"+a.get(i)[1]+"\',\'"+a.get(i)[2]+"\',\'Convert(DateTime,\'"+a.get(i)[3]+"\',126)\');";
 			
 		}
 		return query;
