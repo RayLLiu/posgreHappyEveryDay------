@@ -22,13 +22,13 @@ public class convert {
 		CsvParser parser = new CsvParser(new CsvParserSettings());
 
 		// 2nd, parses all rows from the CSV file into a 2-dimensional array
-		List<String[]> resolvedData = parser.parseAll(new FileReader("/Users/rayliu/Desktop/actor.csv"));
+		List<String[]> resolvedData = parser.parseAll(new FileReader("/Users/rayliu/Desktop/movie.csv"));
 
 		System.out.println(resolvedData.get(10)[3]);
 		String eol = System.getProperty("line.separator");
 		String content = resolvedData.get(10)[3];
 		String query=actor(resolvedData);
-		String path = "/Users/rayliu/Desktop/actor.sql";
+		String path = "/Users/rayliu/Desktop/movie.sql";
 		try{
 		Files.write( Paths.get(path), query.getBytes(), StandardOpenOption.CREATE);}
 		catch (IOException e){

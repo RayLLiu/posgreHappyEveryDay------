@@ -2,8 +2,8 @@
 Select M.*
 from Movie M
 where M.name = user_select_name
-
-/* b */
+/*a is done*/
+/* b is done */
 Select distinct A.First_name,A.Last_name,A.DateOfBirth,R.name
 From Actor A, Role R, Movie M, ActorPlays Ap
 Where (M.name = user_select_name)
@@ -14,7 +14,7 @@ Where (M.name = user_select_name)
  /* c */
  Select distinct D.firstname,D.lastname,D.country,S.name,S.country,M.date_released
  From Director D, Directs Ds, Movie M, Studio S, Topics T, MovieTopics Mt, Sponsors Sp
- Where (T.description = user_select_topic)
+ Where (T.description = $1)
    AND (T.topic_id = Mt.movie_id)
    AND (Mt.movie_id = M.movie_id)
    AND (Mt.movie_id = Ds.movie_id)

@@ -10,7 +10,7 @@ var db = massive.connectSync({
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   console.log("am i hereeeeeee?");
-  res.render('user');
+  res.render('users');
   res.end("yes");
 });
 
@@ -27,21 +27,20 @@ router.get('/get_user_list', function(req, res, next) {
 //Get movie list
 router.get('/get_movie_list', function(req, res, next) {
   console.log("movie");
-  db.get_user_list(function(err, result) {
+  db.get_movie_list(function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 
 //a
-router.get('/get_movie', function(req, res, next) {
+router.post('/get_movie', function(req, res, next) {
 
+  console.log("get_moviejjjjjjjjj"+req.body.moviename);
   db.moviedb.movie.where("name=$1", [req.body.moviename], function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 
 //b
