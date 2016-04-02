@@ -309,7 +309,7 @@
 
     $(document.body).on('click', '.dropdown-menu li a', function(e) {
       var name=$(this).text();
-      name=name.replace(/\s+/g, '');
+      
 
       $.ajax({
         type: "POST",
