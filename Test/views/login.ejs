@@ -16,8 +16,13 @@
     $(document).ready(function() {
       var email, pass;
       $("#login").click(function() {
+
         email = $("#Email").val();
         pass = $("#password").val();
+        if(email==null && pass==null){
+          $("login_status").html("Please enter the email and password");
+        }
+        else{
         $.post("http://localhost:3000/login", {
           email: email,
           password: pass
@@ -28,6 +33,7 @@
             window.location ="http://localhost:3000/";
           }
         });
+      }
       });
     });
 
@@ -68,7 +74,7 @@
       <h1 class="lead">Movie DB</h1>
     </div>
     <p>
-      <%= nullinput %>
+        <span id="login_status"></span>
     </p>
     <div class="todo-form">
       <form>

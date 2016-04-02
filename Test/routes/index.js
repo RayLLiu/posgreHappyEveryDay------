@@ -7,8 +7,9 @@ var connectionString = 'postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:1543
 var db = massive.connectSync({
   connectionString: connectionString
 });
+/*Get main page*/
 router.get('/', function(req, res, next) {
-  res.render('login', {
+  res.render('index', {
     nullinput: ''
   });
   res.end("yes");
@@ -17,6 +18,11 @@ router.get('/', function(req, res, next) {
 /*Get sign up page*/
 router.get('/signup', function(req, res, next) {
   res.render('signup');
+  res.end("yes");
+});
+/*Get sign up page*/
+router.get('/login_page', function(req, res, next) {
+  res.render('login');
   res.end("yes");
 });
 
