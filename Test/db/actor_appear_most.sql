@@ -1,4 +1,3 @@
-SET SEARCH_PATH='moviedb';
 Select distinct A.First_name,A.Last_name,A.DateOfBirth, D.firstname,D.lastname,D.country,S.name,S.country
 From Actor A, Director D,Studio S, Sponsors Sp,ActorPlays Ap,Directs Ds
 Where (A.ActorID in (Select ActorID
@@ -11,4 +10,4 @@ Where (A.ActorID in (Select ActorID
  AND (A.ActorID = Ap.ActorID)
  AND (Sp.movie_id = Ap.MovieID)
  AND (S.studio_id = Sp.studio_id)
- AND (Ds.movie_id = Ap.MovieID); 
+ AND (Ds.movie_id = Ap.MovieID);

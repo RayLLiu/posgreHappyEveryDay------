@@ -1,4 +1,3 @@
-SET SEARCH_PATH='moviedb';
 
 Select distinct D.firstname,D.lastname,D.country,S.name,S.country,M.date_released
 From Director D, Directs Ds, Movie M, Studio S, Topics T, MovieTopics Mt, Sponsors Sp

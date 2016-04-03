@@ -33,7 +33,7 @@ $(document.body).on('click', '.dropdown-menu li', function(event) {
 });
 
 
-$(document.body).on('click', '.dropdown-menu li a', function(e) {
+$(document.body).on('click', '#movie_list li a', function(e) {
   var name=$(this).text();
 
 
@@ -61,8 +61,10 @@ $(document.body).on('click', '.dropdown-menu li a', function(e) {
               Country: result[0].country
           }]
       });
-       $("#frame").attr("src", "http://www.youtube.com/embed/"+ result[0].trailer +"?rel=0&autoplay=1");
-      alert(result[0].country);
+      var trailer=result[0].trailer;
+      trailer = trailer.replace(/\s+/g, '');
+
+       $("#frame").attr("src", "http://www.youtube.com/embed/"+trailer+"?rel=0&autoplay=1");
     }
   });
 

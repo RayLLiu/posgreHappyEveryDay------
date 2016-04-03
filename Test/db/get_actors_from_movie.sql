@@ -1,7 +1,6 @@
-SET SEARCH_PATH='moviedb';
 
 
-Select distinct A.First_name,A.Last_name,A.DateOfBirth,R.name
+Select distinct A.First_name,A.Last_name,A.Date_Of_Birth,R.name
 From Actor A, Role R, Movie M, ActorPlays Ap
     Where (M.name = $1)
     AND (M.movie_id = Ap.movie_id)

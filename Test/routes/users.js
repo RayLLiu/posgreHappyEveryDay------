@@ -9,7 +9,6 @@ var db = massive.connectSync({
 });
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log("am i hereeeeeee?");
   res.render('users');
   res.end("yes");
 });
@@ -18,7 +17,6 @@ router.get('/', function(req, res, next) {
 router.get('/get_user_list', function(req, res, next) {
 
   db.get_user_list(function(err, result) {
-    console.log(result);
     res.send(result[0]);
   });
 
@@ -28,7 +26,6 @@ router.get('/get_user_list', function(req, res, next) {
 router.get('/get_movie_list', function(req, res, next) {
   console.log("movie");
   db.get_movie_list(function(err, result) {
-    console.log(result);
     res.send(result);
   });
 });
@@ -36,7 +33,7 @@ router.get('/get_movie_list', function(req, res, next) {
 //a
 router.post('/get_movie', function(req, res, next) {
 
-  console.log("get_moviejjjjjjjjj"+req.body.moviename);
+  console.log("get_moviejjjjjjjjj" + req.body.moviename);
   db.moviedb.movie.where("name=$1", [req.body.moviename], function(err, result) {
     console.log(result);
     res.send(result);
@@ -44,30 +41,29 @@ router.post('/get_movie', function(req, res, next) {
 });
 
 //b
-router.post('/get_actors_from_movie', function(req, res, next) {
-  console.log(req.body.moviename);
-  db.get_actors_from_movie([req.body.moviename],function(err, result) {
-    console.log(result);
+router.get('/get_actors_from_movie', function(req, res, next) {
+  console.log(req.body.moviename + "n");
+  //var query = "SET SEARCH_PATH='moviedb';  Select distinct A.First_name,A.Last_name,A.Date_Of_Birth,R.name From Actor A, Role R, Movie M, ActorPlays Ap Where (M.name ='" + req.body.moviename + "') AND (M.movie_id = Ap.movie_id) AND (Ap.actor_id = A.actor_id) AND (Ap.role_id = R.role_id);"
+//  console.log(query);
+  db.get_actors_from_movie([req.body.moviename], function(err, result) {
+    // all matching products returned in array
     res.send(result);
   });
 });
 //c
-router.get('/details_of_directors_and_studios', function(req, res, next) {
-  console.log("actor and role");
-  db.details_of_directors_and_studios([req.body.category],function(err, result) {
+router.post('/details_of_directors_and_studios', function(req, res, next) {
+  db.c_details_of_directors_and_studios('Action',function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //d
-router.get('/actor_appear_most', function(req, res, next) {
+router.post('/actor_appear_most', function(req, res, next) {
   console.log("movie");
-  db.actor_appear_most(function(err, result) {
+  db.d_actor_appear_most(function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //e
 router.get('/two_most_actors', function(req, res, next) {
