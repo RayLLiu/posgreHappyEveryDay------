@@ -1,3 +1,6 @@
+
+
+
 $(document.body).on('click', '#movie_list1 li a', function(e) {
   var name=$(this).text();
 

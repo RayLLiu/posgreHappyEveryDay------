@@ -44,13 +44,12 @@ router.post('/get_movie', function(req, res, next) {
 });
 
 //b
-router.get('/get_actors_from_movie', function(req, res, next) {
+router.post('/get_actors_from_movie', function(req, res, next) {
   console.log(req.body.moviename);
   db.get_actors_from_movie([req.body.moviename],function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //c
 router.get('/details_of_directors_and_studios', function(req, res, next) {
