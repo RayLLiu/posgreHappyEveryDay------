@@ -72,16 +72,3 @@ $(document.body).on('click', '#movie_list li a', function(e) {
 
 
 $(".contentContainer").css("min-height", $(window).height());
-$(document).ready(function() {
-  $.getJSON("data.js", {
-      name: "John",
-      time: "2pm"
-    })
-    .done(function(json) {
-      console.log("JSON Data: " + json.users[3].name);
-    })
-    .fail(function(jqxhr, textStatus, error) {
-      var err = textStatus + ", " + error;
-      console.log("Request Failed: " + err);
-    });
-});

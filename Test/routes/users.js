@@ -42,11 +42,11 @@ router.post('/get_movie', function(req, res, next) {
 
 //b
 router.post('/get_actors_from_movie', function(req, res, next) {
-  console.log(req.body.moviename + "n");
   //var query = "SET SEARCH_PATH='moviedb';  Select distinct A.First_name,A.Last_name,A.Date_Of_Birth,R.name From Actor A, Role R, Movie M, ActorPlays Ap Where (M.name ='" + req.body.moviename + "') AND (M.movie_id = Ap.movie_id) AND (Ap.actor_id = A.actor_id) AND (Ap.role_id = R.role_id);"
 //  console.log(query);
   db.b_get_actors_from_movie([req.body.moviename], function(err, result) {
     // all matching products returned in array
+    console.log(result);
     res.send(result);
   });
 });
