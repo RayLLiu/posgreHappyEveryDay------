@@ -29,6 +29,11 @@ $(document).ready(function() {
       $.each(result, function(index, value) {
         $topic_list.append("<li><a>" + result[index].description + "</a></li>");
       });
+      var $topic_list2 = $("#topic_list2");
+      $topic_list2.empty();
+      $.each(result, function(index, value) {
+        $topic_list2.append("<li><a>" + result[index].description + "</a></li>");
+      });
     }
   });
   //d
@@ -136,7 +141,27 @@ $(document).ready(function() {
     });
   }
   });
+  //j
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/users/get_user_list",
+    data: {},
+    success: function(result) {
+      var $user_list = $("#user_list");
+      $user_list.empty();
+      var string;
+      $.each(result, function(index, value) {
+        string="<li><a value="+result[index].user_id+">" + result[index].first_name+"  "+result[index].last_name + "</a></li>";
+        console.log(string);
+        $user_list.append("<li><a value="+result[index].user_id+">" + result[index].first_name+"  "+result[index].last_name + "</a></li>");
+      });
+    }
+    });
+
 });
+
+
+
 
 
 

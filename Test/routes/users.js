@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 router.get('/get_user_list', function(req, res, next) {
 
   db.get_user_list(function(err, result) {
-    res.send(result[0]);
+    console.log(result);
+    res.send(result);
   });
 
 });
@@ -40,9 +41,9 @@ router.get('/get_topic_list', function(req, res, next) {
 //a
 router.post('/get_movie', function(req, res, next) {
 
-  console.log("get_moviejjjjjjjjj" + req.body.moviename);
+  //console.log("get_moviejjjjjjjjj" + req.body.moviename);
   db.moviedb.movie.where("name=$1", [req.body.moviename], function(err, result) {
-    console.log(result);
+  //  console.log(result);
     res.send(result);
   });
 });
@@ -53,7 +54,7 @@ router.post('/get_actors_from_movie', function(req, res, next) {
 //  console.log(query);
   db.b_get_actors_from_movie([req.body.moviename], function(err, result) {
     // all matching products returned in array
-    console.log(result);
+  //  console.log(result);
     res.send(result);
   });
 });
@@ -61,31 +62,31 @@ router.post('/get_actors_from_movie', function(req, res, next) {
 router.post('/details_of_directors_and_studios', function(req, res, next) {
   //console.log(req.body.topic+"********topic");
   db.c_details_of_directors_and_studios([req.body.topic],function(err, result) {
-    console.log(result);
+    //console.log(result);
     res.send(result);
   });
 });
 //d
 router.get('/actor_appear_most', function(req, res, next) {
-  console.log("movie");
+  //console.log("movie");
   db.d_actor_appear_most(function(err, result) {
-    console.log(result);
+  //  console.log(result);
     res.send(result);
   });
 });
 //e
 router.get('/two_most_actors', function(req, res, next) {
-  console.log("movie");
+  //console.log("movie");
   db.e_two_most_actors(function(err, result) {
-    console.log(result);
+    //console.log(result);
     res.send(result);
   });
 });
 //f
 router.get('/ten_highest_rating_movies', function(req, res, next) {
-  console.log("movie");
+  //console.log("movie");
   db.f_ten_highest_rating_movies(function(err, result) {
-    console.log(result);
+    //console.log(result);
     res.send(result);
   });
 });
@@ -93,7 +94,7 @@ router.get('/ten_highest_rating_movies', function(req, res, next) {
 router.get('/highest_rating_movie_and_topic', function(req, res, next) {
   console.log("highest_rating_movie_and_topic");
   db.g_highest_rating_movie_and_topic(function(err, result) {
-    console.log(result);
+    //console.log(result);
     res.send(result);
   });
 });
@@ -101,7 +102,7 @@ router.get('/highest_rating_movie_and_topic', function(req, res, next) {
 router.get('/user_rating_number', function(req, res, next) {
   console.log("movie");
   db.h_user_rating_number(function(err, result) {
-    console.log(result);
+    //console.log(result);
     res.send(result);
   });
 });
@@ -109,7 +110,7 @@ router.get('/user_rating_number', function(req, res, next) {
 router.get('/movie_not_rated_2016', function(req, res, next) {
   console.log("movie");
   db.i_movie_not_rated_2016(function(err, result) {
-    console.log(result);
+  //  console.log(result);
     res.send(result);
   });
 });
