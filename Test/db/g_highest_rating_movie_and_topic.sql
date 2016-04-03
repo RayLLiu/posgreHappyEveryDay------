@@ -1,4 +1,3 @@
-SET SEARCH_PATH='moviedb';
 Select M.*,T.description
  From Movie M, Topics T, MovieTopics Mt
  Where (M.movie_id in (Select movie_id

@@ -1,4 +1,3 @@
-SET SEARCH_PATH='moviedb';
 Select distinct M.name
 From Movie M, Watches W
 Where (M.movie_id in (Select movie_id

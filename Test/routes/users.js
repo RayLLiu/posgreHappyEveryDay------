@@ -41,11 +41,11 @@ router.post('/get_movie', function(req, res, next) {
 });
 
 //b
-router.get('/get_actors_from_movie', function(req, res, next) {
+router.post('/get_actors_from_movie', function(req, res, next) {
   console.log(req.body.moviename + "n");
   //var query = "SET SEARCH_PATH='moviedb';  Select distinct A.First_name,A.Last_name,A.Date_Of_Birth,R.name From Actor A, Role R, Movie M, ActorPlays Ap Where (M.name ='" + req.body.moviename + "') AND (M.movie_id = Ap.movie_id) AND (Ap.actor_id = A.actor_id) AND (Ap.role_id = R.role_id);"
 //  console.log(query);
-  db.get_actors_from_movie([req.body.moviename], function(err, result) {
+  db.b_get_actors_from_movie([req.body.moviename], function(err, result) {
     // all matching products returned in array
     res.send(result);
   });
@@ -58,7 +58,7 @@ router.post('/details_of_directors_and_studios', function(req, res, next) {
   });
 });
 //d
-router.post('/actor_appear_most', function(req, res, next) {
+router.get('/actor_appear_most', function(req, res, next) {
   console.log("movie");
   db.d_actor_appear_most(function(err, result) {
     console.log(result);
@@ -72,25 +72,22 @@ router.get('/two_most_actors', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //f
 router.get('/ten_highest_rating_movies', function(req, res, next) {
   console.log("movie");
-  db.ten_highest_rating_movies(function(err, result) {
+  db.f_ten_highest_rating_movies(function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //g
 router.get('/highest_rating_movie_and_topic', function(req, res, next) {
-  console.log("movie");
-  db.highest_rating_movie_and_topic(function(err, result) {
+  console.log("highest_rating_movie_and_topic");
+  db.g_highest_rating_movie_and_topic(function(err, result) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //h
 router.get('/user_rating_number', function(req, res, next) {
@@ -99,7 +96,6 @@ router.get('/user_rating_number', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //i
 router.get('/movie_not_rated_2016', function(req, res, next) {
@@ -108,7 +104,6 @@ router.get('/movie_not_rated_2016', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //j
 router.get('/director_movie_lower', function(req, res, next) {
@@ -117,7 +112,6 @@ router.get('/director_movie_lower', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //k
 router.get('/category_highest_movie', function(req, res, next) {
@@ -126,7 +120,6 @@ router.get('/category_highest_movie', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //l
 router.get('/category_most_popular', function(req, res, next) {
@@ -135,7 +128,6 @@ router.get('/category_most_popular', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //m
 router.get('/user_overall_rating', function(req, res, next) {
@@ -144,7 +136,6 @@ router.get('/user_overall_rating', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //n
 router.get('/frequent_user', function(req, res, next) {
@@ -153,7 +144,6 @@ router.get('/frequent_user', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //o
 router.get('/John_Smith', function(req, res, next) {
@@ -162,7 +152,6 @@ router.get('/John_Smith', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 //p
 router.get('/diverse_user', function(req, res, next) {
@@ -171,6 +160,5 @@ router.get('/diverse_user', function(req, res, next) {
     console.log(result);
     res.send(result);
   });
-  res.end("yes");
 });
 module.exports = router;
