@@ -175,79 +175,131 @@
     <div class="row">
 
       <div class="col-md-6 col-md-offset-3" id="middle">
-        <table id="movie_table" class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover">
 
+          <tr class="success">
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+
+          <tr>
+            <td class="danger">Rob</td>
+            <td>33</td>
+          </tr>
+
+          <tr>
+            <td>Jenny</td>
+            <td> 35 </td>
+          </tr>
+
+          <tr>
+            <td> Rob</td>
+            <td>33 </td>
+          </tr>
+
+          <tr>
+            <td>Jenny</td>
+            <td> 35</td>
+          </tr>
+          <tr>
+            <td> Rob </td>
+            <td>33 </td>
+          </tr>
+
+          <tr>
+            <td> Jenny </td>
+            <td>35 </td>
+          </tr>
         </table>
-        <div id="mydiv"><iframe id="frame" src="" width="500" height="300">
-  </iframe></div>
-
-      </div>
-    </div>
-
-    <div class="container contentContainer" id="footer">
-
-      <div class="row" class="center">
-
-        <div class="col-md-6 col-md-offset-3">
-          <table class="table table-striped table-bordered table-hover">
-
-            <tr class="success">
-              <th>Name</th>
-              <th>Age</th>
-            </tr>
-
-            <tr>
-              <td class="danger">Rob</td>
-              <td>33</td>
-            </tr>
-
-            <tr>
-              <td>Jenny</td>
-              <td> 35 </td>
-            </tr>
-
-            <tr>
-              <td> Rob</td>
-              <td>33 </td>
-            </tr>
-
-            <tr>
-              <td>Jenny</td>
-              <td> 35</td>
-            </tr>
-            <tr>
-              <td> Rob </td>
-              <td>33 </td>
-            </tr>
-
-            <tr>
-              <td> Jenny </td>
-              <td>35 </td>
-            </tr>
-          </table>
-
-        </div>
 
       </div>
 
 
+
+    </div>
+  </div>
+
+  <div class="container contentContainer" id="footer">
+
+    <div class="row" class="center">
+
+      <div class="col-md-6 col-md-offset-3">
+        <table class="table table-striped table-bordered table-hover">
+
+          <tr class="success">
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+
+          <tr>
+            <td class="danger">Rob</td>
+            <td>33</td>
+          </tr>
+
+          <tr>
+            <td>Jenny</td>
+            <td> 35 </td>
+          </tr>
+
+          <tr>
+            <td> Rob</td>
+            <td>33 </td>
+          </tr>
+
+          <tr>
+            <td>Jenny</td>
+            <td> 35</td>
+          </tr>
+          <tr>
+            <td> Rob </td>
+            <td>33 </td>
+          </tr>
+
+          <tr>
+            <td> Jenny </td>
+            <td>35 </td>
+          </tr>
+        </table>
+
+      </div>
+
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+<<<<<<< HEAD
     <script src="javascript/a.js"></script>
     <script src="javascript/b.js"></script>
 
     <script src="bootstrap-table.js"></script>
     <script src="bootstrap-table-zh-CN.js"></script>
+=======
+  </div>
+
+>>>>>>> parent of 8a8c587... Full stack gogogo!
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<<<<<<< HEAD
 
+=======
+  <script>
+    $(".contentContainer").css("min-height", $(window).height());
+    $(document).ready(function() {
+      $.getJSON("data.js", {
+          name: "John",
+          time: "2pm"
+        })
+        .done(function(json) {
+          console.log("JSON Data: " + json.users[3].name);
+        })
+        .fail(function(jqxhr, textStatus, error) {
+          var err = textStatus + ", " + error;
+          console.log("Request Failed: " + err);
+        });
+    });
+  </script>
+>>>>>>> parent of 8a8c587... Full stack gogogo!
   <script>
     // loading the page with info
     $(document).ready(function() {
@@ -256,24 +308,64 @@
         url: "http://localhost:3000/users/get_movie_list",
         data: {},
         success: function(result) {
+<<<<<<< HEAD
           var $movie_list = $(".dropdown-menu");
+=======
+          var $movie_list = $("#movie_list");
+>>>>>>> parent of 8a8c587... Full stack gogogo!
           $movie_list.empty();
           $.each(result, function(index, value) {
             $movie_list.append("<li><a>" + result[index].name + "</a></li>");
           });
+<<<<<<< HEAD
 		  var $movie_list1 = jQuery.extend(true, {}, $movie_list);
       $movie_list1.empty();
       $.each(result, function(index, value) {
         $movie_list1.append("<li><a>" + result[index].name + "</a></li>");
       });
+=======
+>>>>>>> parent of 8a8c587... Full stack gogogo!
         }
       });
     });
 
+<<<<<<< HEAD
 
 
 
 
+=======
+    $(document.body).on('click', '.dropdown-menu li', function(event) {
+
+      var $target = $(event.currentTarget);
+
+      $target.closest('.btn-group')
+        .find('[data-bind="label"]').text($target.text())
+        .end()
+        .children('.dropdown-toggle').dropdown('toggle');
+
+      return false;
+
+    });
+
+
+    $(document.body).on('click', '.dropdown-menu li a', function(e) {
+      var name=$(this).text();
+      
+
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/get_movie",
+        data: {
+          moviename: name
+        },
+        success: function(result) {
+          alert(result[0].country);
+        }
+      });
+
+    });
+>>>>>>> parent of 8a8c587... Full stack gogogo!
   </script>
 
 </body>
