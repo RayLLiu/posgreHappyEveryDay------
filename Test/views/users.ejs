@@ -148,6 +148,18 @@
             </div>
           </div>
         </div>
+		<div class="panel panel-default">
+          <div class="panel-body">
+            <div id="movieName1" class="btn-group btn-input clearfix">
+              <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                <span data-bind="label1">Select a movie for query 2</span>&nbsp;<span class="caret"></span>
+              </button>
+              <ul id="movie_list1" class="dropdown-menu" role="menu">
+
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
 
@@ -284,30 +296,21 @@
         url: "http://localhost:3000/users/get_movie_list",
         data: {},
         success: function(result) {
-          var $movie_list = $("#movie_list");
+          var $movie_list = $(".dropdown-menu");
           $movie_list.empty();
           $.each(result, function(index, value) {
             $movie_list.append("<li><a>" + result[index].name + "</a></li>");
           });
+		  var $movie_list1 = jQuery.extend(true, {}, $movie_list);
+        
         }
       });
     });
 
-    $(document.body).on('click', '.dropdown-menu li', function(event) {
-
-      var $target = $(event.currentTarget);
-
-      $target.closest('.btn-group')
-        .find('[data-bind="label"]').text($target.text())
-        .end()
-        .children('.dropdown-toggle').dropdown('toggle');
-
-      return false;
-
-    });
 
 
-    $(document.body).on('click', '.dropdown-menu li a', function(e) {
+
+    $(document.body).on('click', '#movie_list li a', function(e) {
       var name=$(this).text();
       
 
@@ -319,6 +322,25 @@
         },
         success: function(result) {
           alert(result[0].country);
+        }
+      });
+
+    });
+
+
+
+    $(document.body).on('click', '#movie_list1 li a', function(e) {
+      var name=$(this).text();
+      
+
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/get_actors_from_movie",
+        data: {
+          moviename: name
+        },
+        success: function(result) {
+          alert(result[0]);
         }
       });
 
