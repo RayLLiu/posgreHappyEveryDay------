@@ -29,7 +29,14 @@ router.get('/get_movie_list', function(req, res, next) {
     res.send(result);
   });
 });
-
+//get topic lists
+router.get('/get_topic_list', function(req, res, next) {
+  console.log("topic");
+  db.get_topic_list(function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
 //a
 router.post('/get_movie', function(req, res, next) {
 
@@ -52,6 +59,7 @@ router.post('/get_actors_from_movie', function(req, res, next) {
 });
 //c
 router.post('/details_of_directors_and_studios', function(req, res, next) {
+  //console.log(req.body.topic+"********topic");
   db.c_details_of_directors_and_studios([req.body.topic],function(err, result) {
     console.log(result);
     res.send(result);

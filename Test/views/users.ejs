@@ -89,6 +89,11 @@
       width: 100%;
     }
 
+    #details2 {
+      background-color: #99ff99;
+      width: 100%;
+    }
+
     #middle {
       padding-top: 200px;
     }
@@ -182,18 +187,18 @@
           </div>
         </div>
         <table class="table table-striped table-bordered table-hover" data-toggle="table">
-      <thead>
-          <tr>
+          <thead>
+            <tr>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Date of birth</th>
               <th>Role</th>
-          </tr>
-      </thead>
-      <tbody id="query_b_rows">
+            </tr>
+          </thead>
+          <tbody id="query_b_rows">
 
-      </tbody>
-  </table>
+          </tbody>
+        </table>
         <div id="mydiv">
           <iframe id="frame" src="" width="500" height="300" frameborder="0">
           </iframe>
@@ -203,6 +208,78 @@
   </div>
 
 
+  <div class="container contentContainer" id="details2">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+          <div id="query c" class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+              <span data-bind="label">Please select a topic</span>&nbsp;<span class="caret"></span>
+            </button>
+            <ul id="topic_list" class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Country</th>
+              <th>Date Released</th>
+            </tr>
+          </thead>
+          <tbody id="query_c_rows">
+
+          </tbody>
+        </table>
+
+      </div>
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+        <p>Query D,Display the information about the actor that appeared the most often in the movies, as
+contained in your database. Display this information together with the details of the director(s)
+and the studio(s) that s(he) worked with</p>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Date of Birth</th>
+              <th>Country</th>
+              <th>Studio name</th>
+              <th>Movie ID</th>
+            </tr>
+          </thead>
+          <tbody id="query_d_rows">
+
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+        <p>Query E,Display the information about the two actors that appeared the most often together in the
+movies, as contained in your database.</p>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Date of Birth</th>
+            </tr>
+          </thead>
+          <tbody id="query_e_rows">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <div class="container contentContainer" id="footer">
 
@@ -257,13 +334,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
 
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+  <!-- Latest compiled and minified Locales -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/locale/bootstrap-table-zh-CN.min.js"></script>
   <script src="javascript/a.js"></script>
   <script src="javascript/b.js"></script>
-  <script src="jquery.min.js"></script>
-  <script src="bootstrap.min.js"></script>
-  <script src="bootstrap-table.js"></script>
-  <script src="bootstrap-table-zh-CN.js"></script>
+  <script src="javascript/c.js"></script>
 
 </body>
 
