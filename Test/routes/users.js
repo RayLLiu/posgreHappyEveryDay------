@@ -52,7 +52,7 @@ router.post('/get_actors_from_movie', function(req, res, next) {
 });
 //c
 router.post('/details_of_directors_and_studios', function(req, res, next) {
-  db.c_details_of_directors_and_studios('Action',function(err, result) {
+  db.c_details_of_directors_and_studios([req.body.topic],function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -68,7 +68,7 @@ router.get('/actor_appear_most', function(req, res, next) {
 //e
 router.get('/two_most_actors', function(req, res, next) {
   console.log("movie");
-  db.two_most_actors(function(err, result) {
+  db.e_two_most_actors(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -92,7 +92,7 @@ router.get('/highest_rating_movie_and_topic', function(req, res, next) {
 //h
 router.get('/user_rating_number', function(req, res, next) {
   console.log("movie");
-  db.user_rating_number(function(err, result) {
+  db.h_user_rating_number(function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -100,47 +100,47 @@ router.get('/user_rating_number', function(req, res, next) {
 //i
 router.get('/movie_not_rated_2016', function(req, res, next) {
   console.log("movie");
-  db.movie_not_rated_2016(function(err, result) {
+  db.i_movie_not_rated_2016(function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 //j
-router.get('/director_movie_lower', function(req, res, next) {
+router.post('/director_movie_lower', function(req, res, next) {
   console.log("movie");
-  db.director_movie_lower(function(err, result) {
+  db.j_director_movie_lower([req.body.user_id],function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 //k
-router.get('/category_highest_movie', function(req, res, next) {
+router.post('/category_highest_movie', function(req, res, next) {
   console.log("category name");
-  db.category_highest_movie([req.body.name], function(err, result) {
+  db.k_category_highest_movie([req.body.topic], function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 //l
-router.get('/category_most_popular', function(req, res, next) {
+router.post('/category_most_popular', function(req, res, next) {
   console.log("category name");
-  db.category_most_popular([req.body.name], function(err, result) {
+  db.l_category_most_popular([req.body.topic1,req.body.topic2],function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 //m
-router.get('/user_overall_rating', function(req, res, next) {
+router.get('/m', function(req, res, next) {
   console.log("category name");
-  db.user_overall_rating([req.body.name], function(err, result) {
+  db.m(function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 //n
-router.get('/frequent_user', function(req, res, next) {
-  console.log("category name");
-  db.frequent_user([req.body.name], function(err, result) {
+router.post('/n', function(req, res, next) {
+  console.log(" n");
+  db.n([req.body.movie_id], function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -148,15 +148,15 @@ router.get('/frequent_user', function(req, res, next) {
 //o
 router.get('/John_Smith', function(req, res, next) {
   console.log("category name");
-  db.John_Smith([req.body.username], function(err, result) {
+  db.o( function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 //p
-router.get('/diverse_user', function(req, res, next) {
+router.post('/diverse_user', function(req, res, next) {
   console.log("category name");
-  db.diverse_user([req.body.username], function(err, result) {
+  db.p([req.body.topic], function(err, result) {
     console.log(result);
     res.send(result);
   });
