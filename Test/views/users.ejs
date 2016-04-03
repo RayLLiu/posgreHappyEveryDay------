@@ -238,33 +238,16 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<<<<<<< HEAD
     <script src="javascript/a.js"></script>
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
+    <script src="javascript/b.js"></script>
+
     <script src="bootstrap-table.js"></script>
     <script src="bootstrap-table-zh-CN.js"></script>
-=======
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script>
-    $(".contentContainer").css("min-height", $(window).height());
-    $(document).ready(function() {
-      $.getJSON("data.js", {
-          name: "John",
-          time: "2pm"
-        })
-        .done(function(json) {
-          console.log("JSON Data: " + json.users[3].name);
-        })
-        .fail(function(jqxhr, textStatus, error) {
-          var err = textStatus + ", " + error;
-          console.log("Request Failed: " + err);
-        });
-    });
-  </script>
+
   <script>
     // loading the page with info
     $(document).ready(function() {
@@ -279,7 +262,10 @@
             $movie_list.append("<li><a>" + result[index].name + "</a></li>");
           });
 		  var $movie_list1 = jQuery.extend(true, {}, $movie_list);
-        
+      $movie_list1.empty();
+      $.each(result, function(index, value) {
+        $movie_list1.append("<li><a>" + result[index].name + "</a></li>");
+      });
         }
       });
     });
@@ -287,43 +273,8 @@
 
 
 
-    $(document.body).on('click', '#movie_list li a', function(e) {
-      var name=$(this).text();
-      
 
-      $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/users/get_movie",
-        data: {
-          moviename: name
-        },
-        success: function(result) {
-          alert(result[0].country);
-        }
-      });
-
-    });
-
-
-
-    $(document.body).on('click', '#movie_list1 li a', function(e) {
-      var name=$(this).text();
-      
-
-      $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/users/get_actors_from_movie",
-        data: {
-          moviename: name
-        },
-        success: function(result) {
-          alert(result[0]);
-        }
-      });
-
-    });
   </script>
->>>>>>> origin/master
 
 </body>
 
