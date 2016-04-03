@@ -68,7 +68,85 @@ $(document).ready(function() {
     });
   }
   });
+  //f
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/users/ten_highest_rating_movies",
+    data: {},
+    success: function(result) {
+      var $query_f_rows = $("#query_f_rows");
+      $query_f_rows.empty();
+      $.each(result, function(index, value) {
+        $query_f_rows.append("<tr>");
+        $query_f_rows.append("<td>" +(index+1)+"  "+ result[index].name + "</td>");
+        $query_f_rows.append("</tr>");
+    });
+  }
+  });
+  //g
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/users/highest_rating_movie_and_topic",
+    data: {},
+    success: function(result) {
+      var $query_g_rows = $("#query_g_rows");
+      $query_g_rows.empty();
+      $.each(result, function(index, value) {
+        $query_g_rows.append("<tr>");
+        $query_g_rows.append("<td>" +result[index].name + "</td>");
+        $query_g_rows.append("<td>" +result[index].date_released + "</td>");
+        $query_g_rows.append("<td>" +result[index].country + "</td>");
+        $query_g_rows.append("<td>" +result[index].description + "</td>");
+        $query_g_rows.append("</tr>");
+    });
+  }
+  });
+  //h
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/users/user_rating_number",
+    data: {},
+    success: function(result) {
+      var $query_h_rows = $("#query_h_rows");
+      $query_h_rows.empty();
+      $.each(result, function(index, value) {
+        $query_h_rows.append("<tr>");
+        $query_h_rows.append("<td>" +result[index].name + "</td>");
+        $query_h_rows.append("<td>" +result[index].first_name + "</td>");
+        $query_h_rows.append("<td>" +result[index].last_name + "</td>");
+        $query_h_rows.append("<td>" +result[index].total_number_of_rating + "</td>");
+        $query_h_rows.append("</tr>");
+    });
+  }
+  });
+  //i
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/users/movie_not_rated_2016",
+    data: {},
+    success: function(result) {
+      var $query_i_rows = $("#query_i_rows");
+      $query_i_rows.empty();
+      $.each(result, function(index, value) {
+        $query_i_rows.append("<tr>");
+        $query_i_rows.append("<td>" +result[index].name + "</td>");
+        $query_i_rows.append("<td>" +result[index].date_released + "</td>");
+        $query_i_rows.append("<td>" +result[index].country + "</td>");
+        $query_i_rows.append("</tr>");
+    });
+  }
+  });
 });
+
+
+
+
+
+
+
+
+
+
 
 $(document.body).on('click', '.dropdown-menu li', function(event) {
 
