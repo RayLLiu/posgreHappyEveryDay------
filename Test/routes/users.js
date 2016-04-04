@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 router.get('/get_user_list', function(req, res, next) {
 
   db.get_user_list(function(err, result) {
-    console.log(result);
+  //  console.log(result);
     res.send(result);
   });
 
@@ -25,7 +25,7 @@ router.get('/get_user_list', function(req, res, next) {
 
 //Get movie list
 router.get('/get_movie_list', function(req, res, next) {
-  console.log("movie");
+  //console.log("movie");
   db.get_movie_list(function(err, result) {
     res.send(result);
   });
@@ -34,7 +34,7 @@ router.get('/get_movie_list', function(req, res, next) {
 router.get('/get_topic_list', function(req, res, next) {
   console.log("topic");
   db.get_topic_list(function(err, result) {
-    console.log(result);
+    //console.log(result);
     res.send(result);
   });
 });
@@ -132,8 +132,10 @@ router.post('/category_highest_movie', function(req, res, next) {
 });
 //l
 router.post('/category_most_popular', function(req, res, next) {
-  console.log("category name");
-  db.l_category_most_popular([req.body.topic1,req.body.topic2],function(err, result) {
+  console.log("category name"+req.body.topic1);
+  console.log("category name"+req.body.topic2);
+
+  db.l([req.body.topic1,req.body.topic2],function(err, result) {
     console.log(result);
     res.send(result);
   });
@@ -148,7 +150,7 @@ router.get('/m', function(req, res, next) {
 });
 //n
 router.post('/n', function(req, res, next) {
-  console.log(" n");
+  console.log(req.body.movie_id);
   db.n([req.body.movie_id], function(err, result) {
     console.log(result);
     res.send(result);

@@ -16,6 +16,19 @@ $(document).ready(function() {
       $.each(result, function(index, value) {
         $movie_list1.append("<li><a>" + result[index].name + "</a></li>");
       });
+      var $movie_list2 = $("#movie_list2");
+      $movie_list2.empty();
+      $.each(result, function(index, value) {
+        $movie_list2.append("<li><a>" + result[index].name + "</a></li>");
+      });
+
+      var $movie_list2 = $("#movie_list2");
+      $movie_list2.empty();
+      var string;
+      $.each(result, function(index, value) {
+        $movie_list2.append("<li><a value="+result[index].movie_id+">" + result[index].name+ "</a></li>");
+      });
+
     }
   });
   //c
@@ -33,6 +46,21 @@ $(document).ready(function() {
       $topic_list2.empty();
       $.each(result, function(index, value) {
         $topic_list2.append("<li><a>" + result[index].description + "</a></li>");
+      });
+      var $topic_list3 = $("#topic_list3");
+      $topic_list3.empty();
+      $.each(result, function(index, value) {
+        $topic_list3.append("<li><a>" + result[index].description + "</a></li>");
+      });
+      var $topic_list4 = $("#topic_list4");
+      $topic_list4.empty();
+      $.each(result, function(index, value) {
+        $topic_list4.append("<li><a>" + result[index].description + "</a></li>");
+      });
+      var $topic_list1 = $("#topic_list1");
+      $topic_list1.empty();
+      $.each(result, function(index, value) {
+        $topic_list1.append("<li><a>" + result[index].description + "</a></li>");
       });
     }
   });
@@ -151,16 +179,58 @@ $(document).ready(function() {
       $user_list.empty();
       var string;
       $.each(result, function(index, value) {
-        string="<li><a value="+result[index].user_id+">" + result[index].first_name+"  "+result[index].last_name + "</a></li>";
-        console.log(string);
         $user_list.append("<li><a value="+result[index].user_id+">" + result[index].first_name+"  "+result[index].last_name + "</a></li>");
       });
     }
     });
 
+    //m
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:3000/users/m",
+      data: {},
+      success: function(result) {
+        var $query_m_rows = $("#query_m_rows");
+        var fir;
+        var las;
+        $query_m_rows.empty();
+        $.each(result, function(index, value) {
+          fir=result[index].first_name.replace(/\s+/g, '');
+          las = result[index].last_name.replace(/\s+/g, '');
+          $query_m_rows.append("<tr>");
+          $query_m_rows.append("<td>"+fir+"  "+las+"</td>");
+          $query_m_rows.append("<td>" +result[index].email + "</td>");
+          $query_m_rows.append("<td>" +result[index].city + "</td>");
+          $query_m_rows.append("<td>" +result[index].province + "</td>");
+          $query_m_rows.append("<td>" +result[index].country + "</td>");
+          $query_m_rows.append("<td>" +result[index].age_range + "</td>");
+          $query_m_rows.append("<td>" +result[index].year_born + "</td>");
+          $query_m_rows.append("<td>" +result[index].gender + "</td>");
+          $query_m_rows.append("<td>" +result[index].occupation + "</td>");
+          $query_m_rows.append("<td>" +result[index].device_used + "</td>");
+          $query_m_rows.append("</tr>");
+      });
+      //o
+      $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/users/John_Smith",
+        data: {},
+        success: function(result) {
+          var $query_o_rows = $("#query_o_rows");
+          $query_o_rows.empty();
+          $.each(result, function(index, value) {
+            $query_o_rows.append("<tr>");
+            $query_o_rows.append("<td>" +result[index].first_name + "</td>");
+            $query_o_rows.append("<td>" +result[index].last_name + "</td>");
+            $query_o_rows.append("<td>" +result[index].email + "</td>");
+            $query_o_rows.append("</tr>");
+        });
+      }
+      });
+    }
+    });
+
 });
-
-
 
 
 

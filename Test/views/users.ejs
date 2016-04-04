@@ -389,7 +389,7 @@
       <div class="col-md-6 col-md-offset-3" id="topRow">
 
         <div class="panel-body">
-          <div id="query c" class="btn-group btn-input clearfix">
+          <div id="query K" class="btn-group btn-input clearfix">
             <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
               <span data-bind="label">Please select a topic</span>&nbsp;<span class="caret"></span>
             </button>
@@ -410,6 +410,146 @@
         </table>
 
       </div>
+      <!--QUERY L************************************************************************** -->
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+          <div id="query l" class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+              <span data-bind="label">Please select the second topic</span>&nbsp;<span class="caret"></span>
+            </button>
+            <ul id="topic_list4" class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+          <div id="query l" class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+              <span data-bind="label">Please select the second topic</span>&nbsp;<span class="caret"></span>
+            </button>
+            <ul id="topic_list3" class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody id="query_l_rows">
+
+          </tbody>
+        </table>
+
+      </div>
+      <!--QUERY M************************************************************************** -->
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+          <p>Query M, Find the names, join‐date and profiling information (age‐range, gender, and so on) of the users
+that give the highest overall ratings. Display this information together with the names of the
+movies and the dates the ratings were done.</p>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>City</th>
+              <th>Province</th>
+              <th>Country</th>
+              <th>Age Range</th>
+              <th>Year born</th>
+              <th>Gender</th>
+              <th>Occupation</th>
+              <th>Device Used</th>
+            </tr>
+          </thead>
+          <tbody id="query_m_rows">
+
+          </tbody>
+        </table>
+      </div>
+      <!--QUERY N************************************************************************** -->
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+          <div id="movieName" class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+              <span data-bind="label">Select a movie</span>&nbsp;<span class="caret"></span>
+            </button>
+            <ul id="movie_list2" class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>City</th>
+              <th>Province</th>
+              <th>Country</th>
+              <th>Age Range</th>
+              <th>Year born</th>
+              <th>Gender</th>
+              <th>Occupation</th>
+              <th>Device Used</th>
+            </tr>
+          </thead>
+          <tbody id="query_n_rows">
+
+          </tbody>
+        </table>
+
+      </div>
+      <!--QUERY O************************************************************************** -->
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+          <p>Query O, Find the names and emails of all users who gave ratings that are lower than that of a rater with a name called John Smith. (Note that there may be more than one rater with this name).
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody id="query_o_rows">
+
+          </tbody>
+        </table>
+      </div>
+      <!--QUERY P************************************************************************** -->
+      <div class="col-md-6 col-md-offset-3" id="topRow">
+
+        <div class="panel-body">
+          <div id="query c" class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+              <span data-bind="label">Please select a topic</span>&nbsp;<span class="caret"></span>
+            </button>
+            <ul id="topic_list1" class="dropdown-menu" role="menu">
+            </ul>
+          </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover" data-toggle="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Movie Name</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody id="query_p_rows">
+
+          </tbody>
+        </table>
+
+      </div>
     </div>
   </div>
 
@@ -418,42 +558,7 @@
     <div class="row" class="center">
 
       <div class="col-md-6 col-md-offset-3">
-        <table class="table table-striped table-bordered table-hover">
-
-          <tr class="success">
-            <th>Name</th>
-            <th>Age</th>
-          </tr>
-
-          <tr>
-            <td class="danger">Rob</td>
-            <td>33</td>
-          </tr>
-
-          <tr>
-            <td>Jenny</td>
-            <td> 35 </td>
-          </tr>
-
-          <tr>
-            <td> Rob</td>
-            <td>33 </td>
-          </tr>
-
-          <tr>
-            <td>Jenny</td>
-            <td> 35</td>
-          </tr>
-          <tr>
-            <td> Rob </td>
-            <td>33 </td>
-          </tr>
-
-          <tr>
-            <td> Jenny </td>
-            <td>35 </td>
-          </tr>
-        </table>
+      
 
       </div>
 
@@ -479,7 +584,9 @@
   <script src="javascript/c.js"></script>
   <script src="javascript/j.js"></script>
   <script src="javascript/k.js"></script>
-
+  <script src="javascript/l.js"></script>
+  <script src="javascript/n.js"></script>
+  <script src="javascript/p.js"></script>
 </body>
 
 </html>
