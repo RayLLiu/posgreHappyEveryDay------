@@ -27,6 +27,7 @@ router.get('/get_user_list', function(req, res, next) {
 router.get('/get_movie_list', function(req, res, next) {
   //console.log("movie");
   db.get_movie_list(function(err, result) {
+    console.log(result);
     res.send(result);
   });
 });

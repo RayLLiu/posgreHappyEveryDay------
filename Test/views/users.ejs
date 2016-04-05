@@ -135,50 +135,58 @@
     </div>
     <!-- /.container-fluid -->
   </nav>
+  <!--QUERY ************************************************************************************************************************************************* -->
+  <!--QUERY ************************************************************************************************************************************************* -->
+  <!--QUERY ************************************************************************************************************************************************* -->
+  <!--QUERY ************************************************************************************************************************************************* -->
   <div class="container contentContainer" id="topContainer">
 
-    <div class="row">
-      <!--QUERY ************************************************************************************************************************************************* -->
-      <!--QUERY ************************************************************************************************************************************************* -->
-      <!--QUERY ************************************************************************************************************************************************* -->
-      <!--QUERY ************************************************************************************************************************************************* -->
-      <!--QUERY A************************************************************************** -->
-      <div class="col-md-6 col-md-offset-3" id="topRow">
-
-        <div class="panel-body">
-          <div id="movieName" class="btn-group btn-input clearfix">
-            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-              <span data-bind="label">Select a movie</span>&nbsp;<span class="caret"></span>
-            </button>
-            <ul id="movie_list" class="dropdown-menu" role="menu">
-            </ul>
-          </div>
-        </div>
-        <table id="movie_table" class="table table-striped table-bordered table-hover">
-
-        </table>
-        <div id="mydiv">
-          <iframe id="frame" src="" width="500" height="300" frameborder="0">
-          </iframe>
-        </div>
-      </div>
 
 
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3" id="topRowB">
-        <div class="panel-body">
-
-
-        </div>
-      </div>
-    </div>
 
   </div>
 
 
   <div class="container contentContainer" id="details">
+    <div class="col-md-12">
+      <div class="row clearfix">
+      <div class="col-md-12 column">
+        <table class="table" id="tab_logic">
+
+          <tbody id="movie_grid">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
     <div class="row">
+      <!--QUERY A************************************************************************** -->
+      <div class="row">
+
+        <div class="col-md-12" id="topRow">
+
+
+          <div class="panel-body">
+            <div id="movieName" class="btn-group btn-input clearfix">
+              <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                <span data-bind="label">Select a movie</span>&nbsp;<span class="caret"></span>
+              </button>
+              <ul id="movie_list" class="dropdown-menu" role="menu">
+              </ul>
+            </div>
+          </div>
+          <table id="movie_table" class="table table-striped table-bordered table-hover">
+
+          </table>
+          <div id="mydiv">
+            <iframe id="frame" src="" width="500" height="300" frameborder="0">
+            </iframe>
+          </div>
+        </div>
+
+
+      </div>
       <!--QUERY B************************************************************************** -->
       <div class="col-md-6 col-md-offset-3" id="topRow">
 
@@ -575,7 +583,17 @@ movies and the dates the ratings were done.</p>
 
 
   </div>
+  <style>
+  h1, h2, h3, h4, h5, h6 {
+      font-family: 'Corben', Georgia, Times, serif;
+  }
+  p, div {
+      font-family: 'Nobile', Helvetica, Arial, sans-serif;
+  }
 
+  </style>
+  <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+   <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->

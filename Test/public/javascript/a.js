@@ -24,13 +24,43 @@ $(document).ready(function() {
 
       var $movie_list2 = $("#movie_list2");
       $movie_list2.empty();
-      var string;
       $.each(result, function(index, value) {
         $movie_list2.append("<li><a value="+result[index].movie_id+">" + result[index].name+ "</a></li>");
       });
 
+
+      //for movie grid
+       var $movie_grid = $("#movie_grid");
+       $movie_grid.empty();
+       var string1;
+       var string2;
+       $movie_grid.append("<tr>");
+       $.each(result, function(index, value) {
+         string1=result[index].image;
+         string2=result[index].name;
+         string1 = string1.replace(/\s+/g, '');
+         string2 = string2.replace(/\s+/g, '');
+         $movie_grid.append("<td style='vertical-align:middle;' class='col-md-3'>");
+         $movie_grid.append("<img src='"+string1+"' alt='not available' style='width:140px;height:300px;'>");
+         $movie_grid.append("<p>"+string2+"</p>");
+         $movie_grid.append("</td>");
+         if((index+1)%4==0){
+         $movie_grid.append("<tr>");
+         $movie_grid.append("</tr>");
+
+         }
+       });
+
+      $movie_grid.append("</tr>");
+
+
     }
   });
+
+
+
+
+
   //c
   $.ajax({
     type: "GET",
