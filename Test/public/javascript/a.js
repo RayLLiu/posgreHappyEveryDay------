@@ -289,6 +289,7 @@ $(document.body).on('click', '#movie_list li a', function(e) {
       trailer = trailer.replace(/\s+/g, '');
 
       $("#frame").attr("src", "http://www.youtube.com/embed/" + trailer + "?rel=0&autoplay=1");
+      $("#movie_picture").attr("src", result[0].image);
     }
   });
 
