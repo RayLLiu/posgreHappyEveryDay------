@@ -41,7 +41,7 @@ $(document).ready(function() {
          string1 = string1.replace(/\s+/g, '');
          string2 = string2.replace(/\s+/g, '');
          $movie_grid.append("<td style='vertical-align:middle;' class='col-md-3'>");
-         $movie_grid.append("<img src='"+string1+"' alt='not available' style='width:140px;height:300px;'>");
+         $movie_grid.append("<img src='"+string1+"' alt='not available' style='width:140px;height:210px;'>");
          $movie_grid.append("<p>"+string2+"</p>");
          $movie_grid.append("</td>");
          if((index+1)%4==0){
