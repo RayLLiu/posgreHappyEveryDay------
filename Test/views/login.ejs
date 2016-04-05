@@ -26,12 +26,22 @@
     .header {
       color: #91B1DC;
     }
+    .prettyline {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
   </style>
   <script>
     $(document).ready(function() {
       var email, pass;
       $("#login").click(function() {
-
+alert("sss");
         email = $("#Email").val();
         pass = $("#password").val();
         if (email == null && pass == null) {
@@ -41,7 +51,10 @@
             email: email,
             password: pass
           }, function(data) {
+            alert("sdsdsda"+data);
             if (data === 'log in success') {
+              alert(data+"data");
+
               window.location = "http://localhost:3000/users";
             } else {
               window.location = "http://localhost:3000/";
@@ -81,6 +94,7 @@
 
 <body>
 
+
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3" id="topRow">
@@ -105,7 +119,7 @@
             <input type="text" id="password" class="form-control input-lg" placeholder="Enter password...">
           </div>
           <div class="button center">
-            <button type="login" id="login" class="btn btn-primary center ">Login</button>
+            <button type="login" id="login" class="btn btn-primary center ">Logidddn</button>
           </div>
         </div>
       </div>

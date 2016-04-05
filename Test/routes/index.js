@@ -28,25 +28,29 @@ router.get('/login_page', function(req, res, next) {
 
 /* Process login requests*/
 router.post('/login', function(req, result, next) {
-  var email = req.body.email;
-  var password = req.body.password;
 
+  var email = req.body.email;
+  var password = req.body.passwordinput;
   //using massive to find password:
   db.moviedb.users.where("email=$1", [email], function(err, res) {
 
     if (err) {
+
       done();
       console.log(err);
       return result.status(500).json({
         success: false,
         data: err
       });
+      result.send('log in failed', {
+        nullinput: 'the pass word does not match'
+      });
     }
     //if the email doesn't exist, redirect to login.
 
     if (res[0] == undefined) {
-      console.log("the password does not match");
-      result.render('log in failed');
+      console.log("the password does not matchsss");
+      result.redirect('/');
       result.end("yes");
     } else {
       var check = res[0].password;
@@ -54,17 +58,16 @@ router.post('/login', function(req, result, next) {
       if (check == password) {
         // The password is correct
         console.log("the password is correct");
-        result.send('log in success');
+        result.redirect('/users');
         result.end("yes");
       } else {
         //The password is in correct
         console.log("the password is incorrect");
-        result.send('log in failed', {
-          nullinput: 'the pass word does not match'
-        });
-        result.end("yes");
+        result.redirect('/');
+        result.end();
       }
     }
+    console.log("last");
   });
 
 });
@@ -72,11 +75,12 @@ router.post('/login', function(req, result, next) {
 
 
 /* Process Signup requests*/
-router.post('/signup/submit', function(req, res, next) {
+router.post('/sign_up_submit', function(req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
-  var first_name = req.body.first_name;
-  var last_name = req.body.last_name;
+  var first_name = req.body.First_Name;
+  var last_name = req.body.Last_Name;
+console.log(req);
   // Get a Postgres client from the connection pool
   db.moviedb.users.insert({
     password: password,
@@ -87,20 +91,19 @@ router.post('/signup/submit', function(req, res, next) {
     if (err) {
       console.log(err);
       console.log("an error happens");
-      res.send('Sign up failed');
+      res.redirect('/');
     } else {
       console.log(result);
       var s="Sign up success";
-      res.send(s);
+      res.redirect('/users');
       console.log(s);
-      res.end("yes");
     }
-
+    res.end();
   });
 });
 /*   Sign up helper function*/
 /*check if the email exists*/
-router.post('/signup/check_email_exists', function(req, result, next) {
+router.post('/check_email_exists', function(req, result, next) {
   var email = req.body.email;
   //Go in to the database
   var decision = true;
