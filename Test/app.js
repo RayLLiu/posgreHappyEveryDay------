@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var massive = require("massive");
-var session = require('client-sessions');
+var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var connectionString = 'postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
@@ -34,22 +34,22 @@ app.set('db', massiveInstance);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//session
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  cookieName: 'session',
-  secret: 'jhhiuhiuhiuhihiuhiuhiuhiuhi',
-  duration: 30 * 60 * 1000,
-  activeDuration: 5 * 60 * 1000,
-}));
+
 app.use('/', routes);
 app.use('/users', users);
-app.use('/movie',require('./routes/movie.js'));  
+app.use('/movie',require('./routes/movie.js'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

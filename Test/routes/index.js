@@ -2,13 +2,22 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 var deepEqual = require('deep-equal');
+var session = require('express-session');
 var massive = require("massive");
 var connectionString = 'postgres://rliu040:8439L177Lr@@web0.site.uottawa.ca:15432/rliu040';
 var db = massive.connectSync({
   connectionString: connectionString
 });
+
+//session part
+var sess;
+router.use(session({secret: 'ssshhhhh'}));
+
 /*Get main page*/
 router.get('/', function(req, res, next) {
+  sess=req.session;
+  sess.email;
+  sess.username;
   res.render('index', {
     nullinput: ''
   });
@@ -57,6 +66,10 @@ router.post('/login', function(req, result, next) {
       check = check.replace(/\s+/g, '');
       if (check == password) {
         // The password is correct
+        sess=req.session;
+        sess.email=res[0].email;
+        sess.username=res[0].first_name;
+
         console.log("the password is correct");
         result.redirect('/movie');
         result.end("yes");
