@@ -58,7 +58,7 @@ router.post('/login', function(req, result, next) {
       if (check == password) {
         // The password is correct
         console.log("the password is correct");
-        result.redirect('/users');
+        result.redirect('/movie');
         result.end("yes");
       } else {
         //The password is in correct
@@ -95,7 +95,7 @@ console.log(req);
     } else {
       console.log(result);
       var s="Sign up success";
-      res.redirect('/users');
+      res.redirect('/movie');
       console.log(s);
     }
     res.end();

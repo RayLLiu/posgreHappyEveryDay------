@@ -49,7 +49,7 @@ app.use(session({
 }));
 app.use('/', routes);
 app.use('/users', users);
-
+app.use('/movie',require('./routes/movie.js'));  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
