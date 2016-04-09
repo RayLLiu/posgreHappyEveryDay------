@@ -16,6 +16,7 @@ router.use(session({secret: 'ssshhhhh'}));
 /*Get main page*/
 router.get('/', function(req, res, next) {
   sess=req.session;
+  sess.user_id;
   sess.email;
   sess.username;
   res.render('index', {
@@ -69,7 +70,8 @@ router.post('/login', function(req, result, next) {
         sess=req.session;
         sess.email=res[0].email;
         sess.username=res[0].first_name;
-
+        sess.user_id=res[0].user_id;
+        console.log(sess.username);
         console.log("the password is correct");
         result.redirect('/movie');
         result.end("yes");
@@ -80,9 +82,7 @@ router.post('/login', function(req, result, next) {
         result.end();
       }
     }
-    console.log("last");
   });
-
 });
 
 
