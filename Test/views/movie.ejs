@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title >Poutineeee~</title>
+  <title>Poutineeee~</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -49,86 +49,89 @@
             <a href="http://localhost:3000/logout">Log out</a>
           </li>
           <li>
-            <form class="navbar-form" role="search">
-        					<div class="input-group">
-        						<input type="text" class="form-control" placeholder="Search...">
-        						<span class="input-group-btn">
-        							<button type="submit" class="btn btn-default">
-        								<span class="glyphicon glyphicon-search">
-        									<span class="sr-only">Search...</span>
-        								</span>
-        							</button>
-        						</span>
-        					</div>
-        				</form>
-               </li>
+            <div class="navbar-form" role="search">
+              <div class="input-group">
+                <input id="query" type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                      <button id="search" class="btn btn-default" data-toggle="modal" data-target="#search_modal">
+                        <span class="glyphicon glyphicon-search">
+                          <span class="sr-only">Search...</span>
+                </span>
+                </button>
+                </span>
+              </div>
+            </div>
+          </li>
+
         </ul>
       </div>
       <!-- /.navbar-collapse -->
+
     </div>
     <!-- /.container -->
+
   </nav>
 
   <!-- Page Content -->
   <div id="container" class="container">
     <div class="col-lg-12">
-      <h1 class="page-header"style="color:#fff;">Poutine Movieee! ^.^ </h1>
-    </div>
-
-    <div id="movie_row" class="row">
+      <h1 class="page-header" style="color:#fff;">Poutine Movieee! ^.^ </h1>
 
 
+      <div id="movie_row" class="row">
 
 
 
-      <div id='g1' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+
+        <div id='g1' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g2' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g3' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g4' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g5' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g6' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g7' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g8' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g9' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g10' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g11' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+        <div id='g12' class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+        </div>
+
+
+        <a id="left" class="left carousel-control" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a id="right" class="right carousel-control" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
 
       </div>
-      <div id='g2' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g3' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g4' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g5'class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g6' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g7' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g8'  class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g9' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g10' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g11' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-      <div id='g12' class="col-lg-3 col-md-4 col-xs-6 thumb">
-
-      </div>
-
-
-      <a id="left" class="left carousel-control" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a id="right" class="right carousel-control"  role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-
-    </div>
 
       <hr>
 
@@ -141,316 +144,523 @@
         </div>
       </footer>
 
-  </div>
+    </div>
 
-  <!-- modal!!!!!!!!!-->
-
-
+    <!-- modal!!!!!!!!!-->
 
 
-
-
-  <div class="modal fade" id="image-gallery1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="search_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="image-gallery-title1"></h4>
-              </div>
-              <div class="modal-body">
-                  <img id="image-gallery-image1" class="img-responsive" src="">
-                  <iframe id="frame1" src="" width="500" height="300" frameborder="0">
-                  </iframe>
-              </div>
-              <div class="modal-footer">
-
-
-
-                  <div class="col-md-8 text-justify" id="image-gallery-caption1">
-
-                  </div>
-
-
-              </div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <a>Result</a>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
           </div>
-      </div>
-  </div>
-  <div class="modal fade" id="image-gallery2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="image-gallery-title2"></h4>
+          <div id="append" class="modal-body">
+            <div class="row">
+              <div class="col-sm-4">
+                One of three columns
               </div>
-              <div class="modal-body">
-                  <img id="image-gallery-image2" class="img-responsive" src="">
-                  <iframe id="frame2" src="" width="500" height="300" frameborder="0">
-                  </iframe>
+              <div class="col-sm-8">
+                One of three columns
               </div>
-              <div class="modal-footer">
-
-
-
-                  <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                  </div>
-
-
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="modal fade" id="image-gallery3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="image-gallery-title3"></h4>
-              </div>
-              <div class="modal-body">
-                  <img id="image-gallery-image3" class="img-responsive" src="">
-                  <iframe id="frame3" src="" width="500" height="300" frameborder="0">
-                  </iframe>
-              </div>
-              <div class="modal-footer">
-
-
-
-                  <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                  </div>
-
-
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="modal fade" id="image-gallery4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="image-gallery-title4"></h4>
-              </div>
-              <div class="modal-body">
-                  <img id="image-gallery-image4" class="img-responsive" src="">
-                  <iframe id="frame4" src="" width="500" height="300" frameborder="0">
-                  </iframe>
-              </div>
-              <div class="modal-footer">
-
-
-
-                  <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                  </div>
-
-
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="modal fade" id="image-gallery5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="image-gallery-title5"></h4>
-              </div>
-              <div class="modal-body">
-                  <img id="image-gallery-image5" class="img-responsive" src="">
-                  <iframe id="frame5" src="" width="500" height="300" frameborder="0">
-                  </iframe>
-              </div>
-              <div class="modal-footer">
-
-
-
-                  <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                  </div>
-
-
-              </div>
-          </div>
-      </div>
-  </div>  <div class="modal fade" id="image-gallery6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="image-gallery-title6"></h4>
-                </div>
-                <div class="modal-body">
-                    <img id="image-gallery-image6" class="img-responsive" src="">
-                    <iframe id="frame6" src="" width="500" height="300" frameborder="0">
-                    </iframe>
-                </div>
-                <div class="modal-footer">
-
-
-
-                    <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                    </div>
-
-
-                </div>
             </div>
+            <div class="modal-footer">
+
+
+
+              <div class="col-md-8 text-justify" id="image-gallery-caption1">
+
+              </div>
+
+
+            </div>
+          </div>
         </div>
-    </div>  <div class="modal fade" id="image-gallery7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                      <h4 class="modal-title" id="image-gallery-title7"></h4>
-                  </div>
-                  <div class="modal-body">
-                      <img id="image-gallery-image7" class="img-responsive" src="">
-                      <iframe id="frame7" src="" width="500" height="300" frameborder="0">
-                      </iframe>
-                  </div>
-                  <div class="modal-footer">
+      </div>
+    </div>
 
 
 
-                      <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                      </div>
-
-
-                  </div>
-              </div>
+    <div class="modal fade" id="image-gallery1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title1"></h4>
           </div>
-      </div>  <div class="modal fade" id="image-gallery8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="image-gallery-title8"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <img id="image-gallery-image8" class="img-responsive" src="">
-                        <iframe id="frame8" src="" width="500" height="300" frameborder="0">
-                        </iframe>
-                    </div>
-                    <div class="modal-footer">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image1" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors1">
+
+                </div>
+              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame1" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
 
 
 
-                        <div class="col-md-8 text-justify" id="image-gallery-caption">
+            <div class="col-md-8 text-justify" id="image-gallery-caption1">
 
-                        </div>
+            </div>
 
 
-                    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title2"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image2" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors2">
+
+                </div>
+              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame2" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title3"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image3" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors3">
+
+                </div>
                 </div>
             </div>
-        </div>  <div class="modal fade" id="image-gallery9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                          <h4 class="modal-title" id="image-gallery-title9"></h4>
-                      </div>
-                      <div class="modal-body">
-                          <img id="image-gallery-image9" class="img-responsive" src="">
-                          <iframe id="frame9" src="" width="500" height="300" frameborder="0">
-                          </iframe>
-                      </div>
-                      <div class="modal-footer">
-
-
-
-                          <div class="col-md-8 text-justify" id="image-gallery-caption">
-
-                          </div>
-
-
-                      </div>
-                  </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame3" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
               </div>
-          </div>  <div class="modal fade" id="image-gallery10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                            <h4 class="modal-title" id="image-gallery-title10"></h4>
-                        </div>
-                        <div class="modal-body">
-                            <img id="image-gallery-image10" class="img-responsive" src="">
-                            <iframe id="frame10" src="" width="500" height="300" frameborder="0">
-                            </iframe>
-                        </div>
-                        <div class="modal-footer">
+            </div>
+
+          </div>
+          <div class="modal-footer">
 
 
 
-                            <div class="col-md-8 text-justify" id="image-gallery-caption">
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
 
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>  <div class="modal fade" id="image-gallery11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                              <h4 class="modal-title" id="image-gallery-title11"></h4>
-                          </div>
-                          <div class="modal-body">
-                              <img id="image-gallery-image11" class="img-responsive" src="">
-                              <iframe id="frame11" src="" width="500" height="300" frameborder="0">
-                              </iframe>
-                          </div>
-                          <div class="modal-footer">
+            </div>
 
 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title4"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image4" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors4">
 
-                              <div class="col-md-8 text-justify" id="image-gallery-caption">
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-4">
+                <iframe id="frame1" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
 
-                              </div>
-
-
-                          </div>
-                      </div>
-                  </div>
-              </div>  <div class="modal fade" id="image-gallery12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                <h4 class="modal-title" id="image-gallery-title12"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <img id="image-gallery-image12" class="img-responsive" src="">
-                                <iframe id="frame12" src="" width="500" height="300" frameborder="0">
-                                </iframe>
-                            </div>
-                            <div class="modal-footer">
+          </div>
+          <div class="modal-footer">
 
 
 
-                                <div class="col-md-8 text-justify" id="image-gallery-caption">
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
 
-                                </div>
+            </div>
 
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-  <!-- /.container -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title5"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image5" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors5">
 
-  <!-- jQuery -->
-  <script src="js/jquery.js"></script>
-  <script src="javascript/moviehelper.js"></script>
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame5" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
 
-  <!-- Bootstrap Core JavaScript -->
-  <script src="js/bootstrap.min.js"></script>
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title6"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image6" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors6">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame6" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title7"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image7" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors7">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame7" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title8"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image8" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors8">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame8" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title9"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image9" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors9">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame9" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title10"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image10" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors10">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame10" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title11"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image11" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors11">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame11" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="image-gallery12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title12"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <img id="image-gallery-image12" class="img-responsive" src="" style='width:390px;height:260px;'>
+              </div>
+              <div class="col-sm-6">
+                <div id="actors12">
+
+                </div>              </div>
+            </div>
+           <hr>
+            <div class="row">
+              <div class="col-md-offset-1">
+                <iframe id="frame12" src="" width="500" height="300" frameborder="0" allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="javascript/moviehelper.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 

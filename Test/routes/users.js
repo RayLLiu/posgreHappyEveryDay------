@@ -38,6 +38,15 @@ router.get('/get_topic_list', function(req, res, next) {
     res.send(result);
   });
 });
+router.post('/get_director_from_movie', function(req, res, next) {
+
+  //console.log("get_moviejjjjjjjjj" + req.body.moviename);
+  db.get_director_from_movie([req.body.moviename], function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
+
 //a
 router.post('/get_movie', function(req, res, next) {
 
