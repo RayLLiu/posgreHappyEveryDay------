@@ -30,7 +30,7 @@ router.get('/', function(req, res, next) {
 router.get('/user_profile', function(req, res, next) {
   sess = req.session;
   console.log(sess.username);
-  if (true) {
+  if (sess.email) {
     res.render('user_profile', {
       user: sess.username
     });
