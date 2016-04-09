@@ -270,7 +270,7 @@ $(document).ready(function() {
   $('#Email_signup').blur(function() {
     $.ajax({
       type: "POST",
-      url: "http://localhost:3000/signup/check_email_exists",
+      url: "http://localhost:3000/check_email_exists",
       data: {
         email: $("#Email_signup").val()
       },

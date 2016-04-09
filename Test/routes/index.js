@@ -93,7 +93,6 @@ router.post('/sign_up_submit', function(req, res, next) {
   var password = req.body.password;
   var first_name = req.body.First_Name;
   var last_name = req.body.Last_Name;
-console.log(req);
   // Get a Postgres client from the connection pool
   db.moviedb.users.insert({
     password: password,
@@ -106,8 +105,17 @@ console.log(req);
       console.log("an error happens");
       res.redirect('/');
     } else {
+      sess=req.session;
+      sess.email=result.email;
+      sess.username=result.first_name;
       console.log(result);
       var s="Sign up success";
+      db.moviedb.profile.insert({user_id:result.user_id},function(err,profileresult){
+        console.log(profileresult);
+      });
+
+
+
       res.redirect('/movie');
       console.log(s);
     }
