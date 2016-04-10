@@ -32,7 +32,7 @@ router.get('/get_movie_list', function(req, res, next) {
 });
 //get topic lists
 router.get('/get_topic_list', function(req, res, next) {
-  console.log("topic");
+  //console.log("topic");
   db.get_topic_list(function(err, result) {
     //console.log(result);
     res.send(result);
@@ -42,17 +42,59 @@ router.post('/get_director_from_movie', function(req, res, next) {
 
   //console.log("get_moviejjjjjjjjj" + req.body.moviename);
   db.get_director_from_movie([req.body.moviename], function(err, result) {
+  //  console.log(result);
+    res.send(result);
+  });
+});
+router.post('/find_actor', function(req, res, next) {
+
+  //console.log("get_moviejjjjjjjjj" + req.body.first_name);
+  db.find_actor([req.body.first_name], function(err, result) {
+  //  console.log(result);
+    res.send(result);
+  });
+});
+
+router.post('/find_director', function(req, res, next) {
+
+  //console.log("get_moviejjjjjjjjj" + req.body.first_name);
+  db.find_director([req.body.first_name], function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
+router.post('/find_movie_by_director', function(req, res, next) {
+
+  //console.log("get_moviejjjjjjjjj" + req.body.first_name);
+  db.find_movie_by_director([req.body.first_name], function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
+});
+router.post('/find_movie_by_studio', function(req, res, next) {
+
+  //console.log("get_moviejjjjjjjjj" + req.body.first_name);
+  db.find_movie_by_studio([req.body.studio_name], function(err, result) {
     console.log(result);
     res.send(result);
   });
 });
 
+//studio
+router.post('/get_studio', function(req, res, next) {
+
+  console.log(req.body.studio_name);
+  db.moviedb.studio.where("name=$1", [req.body.studio_name], function(err, result) {
+   console.log(result);
+    res.send(result);
+  });
+});
 //a
 router.post('/get_movie', function(req, res, next) {
 
-  //console.log("get_moviejjjjjjjjj" + req.body.moviename);
+  console.log(req.body.moviename);
   db.moviedb.movie.where("name=$1", [req.body.moviename], function(err, result) {
-  //  console.log(result);
+   console.log(result);
     res.send(result);
   });
 });

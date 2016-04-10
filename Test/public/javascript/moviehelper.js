@@ -140,25 +140,164 @@ $(document).ready(function() {
   $('#search').click(function(){
     var $append = $("#append");
     var entry=$("#query").val();
-    entry=entry.replace(/\s+/g, '');
+    $append.empty();
+
+    //append movie:
       $.ajax({
         type: "POST",
-        url: "http://localhost:3000/movie/get_data",
+        url: "http://localhost:3000/users/get_movie",
         data: {
-          query: entry
+          moviename: entry
         },
         success: function(result) {
-          $append.empty();
-          $.each(result, function(index, value) {
-            $append.append("<tr>");
-            $append.append("<td>"+result[index].first_name+"</td>");
-            $append.append("<td>"+result[index].last_name+"</td>");
-            $append.append("<td>"+result[index].country+"</td>");
-            $append.append("<td>"+result[index].date_released+"</td>");
-            $append.append("</tr>");
+          var trailer = result[0].trailer;
+          trailer = trailer.replace(/\s+/g, '');
+          var img=result[0].image;
+          img=img.replace(/\s+/g, '');
+          var name=result[0].name;
+          $append.append("<div class='row'><div class='col-sm-6'><img class='img-responsive' src='"+img+"' style='width:390px;height:260px;'></div><div class='col-sm-6'><div id='actoor'><div>"+name+"</div></div></div></div><hr><div class='row'><div class='col-md-offset-1'><iframe id='frame1' src='http://www.youtube.com/embed/" + trailer + "?rel=0&autoplay=0'width='500' height='300' frameborder='0' allowfullscreen></iframe></div></div>");
+
+        }
+      });
+      //get director:
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/get_director_from_movie",
+        data: {
+          moviename: entry
+        },
+        success: function(result3) {
+          //alert(result3);
+            var first_name=result3[0].first_name;
+            var last_name=result3[0].last_name
+            var $actoor = $("#actoor");
+            first_name=first_name.replace(/\s+/g, '');
+            last_name=last_name.replace(/\s+/g, '');
+            $actoor.append("<div> Director: "+first_name+"  "+last_name+"</div>");
+
+        }
+      });
+      // actor in the movie
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/get_actors_from_movie",
+        data: {
+          moviename: entry
+        },
+        success: function(result2) {
+            var list=1;
+          $.each(result2, function(index, value) {
+
+            var first_name=result2[index].first_name;
+            var last_name=result2[index].last_name
+            var $actoor = $("#actoor");
+            first_name=first_name.replace(/\s+/g, '');
+            last_name=last_name.replace(/\s+/g, '');
+            $actoor.append("<div> Actor"+list+": "+first_name+"  "+last_name+"</div>");
+list++;
           });
         }
       });
+
+
+      //get actor:
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/find_actor",
+        data: {
+          first_name: entry
+        },
+        success: function(result4) {
+          $.each(result4, function(index, value) {
+
+            var first_name=result4[index].first_name;
+            var last_name=result4[index].last_name;
+            var img=result4[0].image;
+            img=img.replace(/\s+/g, '');
+            var $actoor = $("#actoor");
+            first_name=first_name.replace(/\s+/g, '');
+            last_name=last_name.replace(/\s+/g, '');
+            $append.append("<div class='row'><div class='col-sm-6'><img class='img-responsive' src='"+img+"' style='width:390px;height:260px;'></div><div class='col-sm-6'><div id='actoor'><div> Name:"+first_name+" "+last_name+"</div><div> Date of birth: "+result4[0].date_of_birth+"</div></div></div></div><hr><div class='row'></div>");
+          });
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/find_director",
+        data: {
+          first_name: entry
+        },
+        success: function(result4) {
+          $.each(result4, function(index, value) {
+
+            var first_name=result4[index].first_name;
+            var last_name=result4[index].last_name;
+            var img=result4[0].image;
+            img=img.replace(/\s+/g, '');
+            first_name=first_name.replace(/\s+/g, '');
+            last_name=last_name.replace(/\s+/g, '');
+            $append.append("<div class='row'><div class='col-sm-6'><img class='img-responsive' src='"+img+"' style='width:390px;height:260px;'></div><div class='col-sm-6'><div id='director'><div> Name:"+first_name+" "+last_name+"</div><div> Country: "+result4[0].country+"</div></div></div></div><hr><div class='row'></div>");
+          });
+        }
+      });
+
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/find_movie_by_director",
+        data: {
+          first_name: entry
+        },
+        success: function(result5) {
+            var list2=1;
+          $.each(result5, function(index, value) {
+
+
+            var $director = $("#director");
+
+
+            $director.append("<div> Movie"+list2+": "+result5[index].name+"</div>");
+list2++;
+          });
+        }
+      });
+      //get studio
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/get_studio",
+        data: {
+          studio_name: entry
+        },
+        success: function(result6) {
+          $.each(result6, function(index, value) {
+
+            var name=result6[index].name;
+            var country=result6[index].country;
+            var img=result6[0].image;
+            img=img.replace(/\s+/g, '');
+            $append.append("<div class='row'><div class='col-sm-6'><img class='img-responsive' src='"+img+"' style='width:390px;height:260px;'></div><div class='col-sm-6'><div id='studio'><div> Studio Name:"+name+"</div><div> Country: "+result6[0].country+"</div></div></div></div><hr><div class='row'></div>");
+          });
+        }
+      });
+      $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/users/find_movie_by_studio",
+        data: {
+          studio_name: entry
+        },
+        success: function(result5) {
+            var list2=1;
+          $.each(result5, function(index, value) {
+
+
+            var $studio = $("#studio");
+
+            $studio.append("<div> Movie"+list2+": "+result5[index].name+"</div>");
+            list2++;
+          });
+        }
+      });
+
+
 });
 
 
