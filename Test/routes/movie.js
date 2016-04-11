@@ -67,6 +67,7 @@ router.post('/update_user', function(req, res, next) {
     console.log("d");
     if (err) {}
   });
+  sess=req.session;
   sess.email = req.body.email;
   sess.username = req.body.first_name;
 
